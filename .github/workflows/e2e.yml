@@ -27,6 +27,12 @@ jobs:
       - name: Build debug APK with coverage
         run: ./gradlew :app:assembleDebug
 
+      - name: Pre-download AVD system image
+        continue-on-error: true
+        run: |
+          yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --install "system-images;android-34;google_apis;x86_64" || \
+          yes | "$ANDROID_SDK_ROOT/tools/bin/sdkmanager" --install "system-images;android-34;google_apis;x86_64" || true
+
       - name: Run E2E tests on emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -34,18 +40,24 @@ jobs:
           target: google_apis
           arch: x86_64
           avd-name: e2e-test
-          force-avd-creation: false
+          force-avd-creation: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
           disable-animations: true
+          boot-timeout: 600
           script: ./gradlew :e2e-tests:connectedCheck
 
       - name: Generate CTRF report
         if: always()
         run: |
           mkdir -p build/test-results
-          python3 scripts/ctrf-converter.py \
-            --input e2e-tests/build/outputs/androidTest-results/connected/ \
-            --output build/test-results/ctrf-report.json
+          if [ -d "e2e-tests/build/outputs/androidTest-results/connected/" ]; then
+            python3 scripts/ctrf-converter.py \
+              --input e2e-tests/build/outputs/androidTest-results/connected/ \
+              --output build/test-results/ctrf-report.json
+          else
+            echo "No test results found (tests may have been skipped or cancelled)"
+            echo '{"results":{"tool":{"name":"AndroidJUnitRunner","version":"1.0"},"summary":{"tests":0,"passed":0,"failed":0,"pending":0,"skipped":0,"time":{"start":"","end":"","duration":0},"suites":0},"tests":[]}}' > build/test-results/ctrf-report.json
+          fi
 
       - name: Publish CTRF report to summary
         if: always()
