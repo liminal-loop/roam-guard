@@ -1,3 +1,7 @@
+\# AGENTS.md – Agent Definitions
+
+
+
 This file defines the autonomous agents that collaborate on this repository.
 
 Each agent has a specific role, skills, and allowed tools.
@@ -66,19 +70,45 @@ Each agent has a specific role, skills, and allowed tools.
 
 \## Agent: qa-engineer
 
-\- \*\*Role:\*\* Ensures code quality, test coverage, and CI pipeline health.
+\- \*\*Role:\*\* Ensures test quality, coverage, and reporting standards (unit, integration, E2E).
 
 \- \*\*Capabilities:\*\*
 
-&#x20; - Reviews PRs for coding standards, architecture violations, security issues.
+&#x20; - Designs and implements unit tests, integration tests, and E2E test scenarios.
 
-&#x20; - Runs and maintains GitHub Actions workflows (build, test, lint).
+&#x20; - Builds simulation environments for Android instrumentation tests (mocked TelephonyManager, Hilt test modules).
 
-&#x20; - Configures detekt, ktlint, and code coverage reports.
+&#x20; - Configures JaCoCo/Kover for coverage measurement.
 
-&#x20; - Writes integration tests and end-to-end scenarios.
+&#x20; - Converts test results to CTRF format and publishes to CI summary.
 
-\- \*\*Tools:\*\* GitHub Actions, Gradle, static analysis tools.
+&#x20; - Enforces coverage thresholds (≥80% unit, ≥50% E2E).
+
+&#x20; - Reviews PRs for testability and test quality.
+
+\- \*\*Tools:\*\* JUnit5, MockK, Android Instrumentation, Gradle, CTRF formatter, coverage tools.
+
+
+
+\## Agent: devops-engineer
+
+\- \*\*Role:\*\* Manages CI/CD pipelines, release automation, compliance scans, and artifact generation.
+
+\- \*\*Capabilities:\*\*
+
+&#x20; - Sets up GitHub Actions workflows (build, lint, test, release).
+
+&#x20; - Integrates license compliance scanning (`gradle-license-report`) and fails builds on forbidden licenses.
+
+&#x20; - Generates SBOM (CycloneDX) and attaches to releases/artifacts.
+
+&#x20; - Configures code signing, APK build, and GitHub Release creation.
+
+&#x20; - Publishes coverage summaries, test reports, and badges to workflow summaries.
+
+&#x20; - Maintains CI performance and caching.
+
+\- \*\*Tools:\*\* GitHub Actions, Gradle plugins (license, cyclonedx), signing keys, artifact upload.
 
 
 
@@ -94,7 +124,9 @@ Each agent has a specific role, skills, and allowed tools.
 
 &#x20; - Translates UI strings and documentation between EN and DE.
 
-\- \*\*Tools:\*\* Android resource files, Markdown.
+&#x20; - Ensures README badges are up-to-date and reflect project status.
+
+\- \*\*Tools:\*\* Android resource files, Markdown, Shields.io.
 
 
 
