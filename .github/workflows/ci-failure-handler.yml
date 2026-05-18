@@ -18,7 +18,7 @@ jobs:
       - name: Notify agent of CI failure
         uses: actions/github-script@v7
         env:
-          AGENT_USERNAMES: ${{ vars.AGENT_USERNAMES || 'opencode[bot]' }}
+          AGENT_USERNAMES: opencode[bot],opencode-agent[bot]
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
