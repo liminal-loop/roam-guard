@@ -91,4 +91,4 @@ Each agent has a specific role, skills, and allowed tools.
 - An agent must not merge its own PR; a different agent reviews and merges.
 - The `android-architect` agent sets up the initial structure before feature work begins.
 - Every feature request must be submitted as a GitHub Issue with a clear title and description.
-- Agents pick up Issues by commenting “/opencode claim” and then begin implementation.
+- Agents pick up Issues by commenting "/opencode claim" and then begin implementation.
