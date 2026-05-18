@@ -51,7 +51,8 @@ class ShizukuApiReflector {
                 Int::class.javaPrimitiveType,
                 Boolean::class.javaPrimitiveType
             )
-            method.trySetAccessible()
+            @Suppress("DiscouragedPrivateApi")
+            method.isAccessible = true
             method.invoke(tm, subId, enabled) as Boolean
         } catch (e: Exception) {
             false
