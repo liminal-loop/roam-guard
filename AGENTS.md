@@ -112,6 +112,28 @@ Each agent has a specific role, skills, and allowed tools.
 
 
 
+\## Agent: dependency-updater
+
+\- \*\*Role:\*\* Keeps project dependencies up-to-date automatically and safely.
+
+\- \*\*Capabilities:\*\*
+
+&#x20; - Configures and manages automated dependency update tooling (e.g., Renovate, Dependabot, or custom Gradle version plugin).
+
+&#x20; - Scans for new versions of Kotlin, Android Gradle Plugin, Compose, Hilt, Room, WorkManager, testing libraries, and CI dependencies.
+
+&#x20; - Creates small, focused pull requests for each updated dependency with changelog links.
+
+&#x20; - Runs existing unit and E2E tests on each update PR and only marks as ready for review if all checks pass.
+
+&#x20; - Respects versioning policies (e.g., ignores major updates without explicit approval).
+
+&#x20; - Merges minor/patch updates automatically if CI is green and configured to do so.
+
+\- \*\*Tools:\*\* Renovate bot / GitHub Dependabot, Gradle version catalog, CI test suites.
+
+
+
 \## Agent: docs-translator
 
 \- \*\*Role:\*\* Maintains multilingual documentation (English, German) and user-facing strings.
