@@ -1,9 +1,9 @@
 <libraries>
   <library
       name=":@@:mcc-data::debug"
-      jars="/home/runner/.gradle/caches/transforms-4/94b36896f0a1982573b43f03df7037a5/transformed/out/jars/classes.jar:/home/runner/.gradle/caches/transforms-4/94b36896f0a1982573b43f03df7037a5/transformed/out/jars/libs/R.jar"
+      jars="/home/runner/.gradle/caches/transforms-4/02e3a79a768e35c52cf998b2d4a050b5/transformed/out/jars/classes.jar:/home/runner/.gradle/caches/transforms-4/02e3a79a768e35c52cf998b2d4a050b5/transformed/out/jars/libs/R.jar"
       resolved="RoamGuard:mcc-data:unspecified"
-      folder="/home/runner/.gradle/caches/transforms-4/94b36896f0a1982573b43f03df7037a5/transformed/out"
+      folder="/home/runner/.gradle/caches/transforms-4/02e3a79a768e35c52cf998b2d4a050b5/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

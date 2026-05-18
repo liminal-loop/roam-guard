@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.5.0" type="conditional_incidents">
+
+    <incident
+        id="InlinedApi"
+        severity="warning"
+        message="">
+        <fix-data minSdk="fffffffffe000000" requiresApi="ffffffffe0000000"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/roamguard/app/service/RoamingForegroundService.kt"
+            line="100"
+            column="44"
+            startOffset="3691"
+            endLine="100"
+            endColumn="90"
+            endOffset="3737"/>
+        <map>
+            <entry
+                name="owner"
+                string="android.telephony.PhoneStateListener"/>
+            <api-levels id="minSdk"
+                value="fffffffffe000000"/>
+            <api-levels id="requiresApi"
+                value="ffffffffe0000000"/>
+            <entry
+                name="name"
+                string="LISTEN_DISPLAY_INFO_CHANGED"/>
+            <entry
+                name="message"
+                string="Field requires API level 30 (current min is %1$s): `android.telephony.PhoneStateListener#LISTEN_DISPLAY_INFO_CHANGED`"/>
+        </map>
+    </incident>
+
+</incidents>

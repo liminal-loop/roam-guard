@@ -6,7 +6,7 @@
     debuggable="true"
     mergedManifest="build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml"
     partialResultsDir="build/intermediates/android_test_lint_partial_results/debug/lintAnalyzeDebugAndroidTest/out"
-    desugaredMethodsFiles="/home/runner/.gradle/caches/transforms-4/6e7ee295591e9326132de4b009a857fb/transformed/D8BackportedDesugaredMethods.txt">
+    desugaredMethodsFiles="/home/runner/.gradle/caches/transforms-4/2654d8d85113c2c13f8802ab40372b90/transformed/D8BackportedDesugaredMethods.txt">
   <buildFeatures
       namespacing="REQUIRED"/>
   <sourceProviders>
@@ -25,6 +25,6 @@
       type="INSTRUMENTATION_TEST"
       applicationId="com.roamguard.shizuku.test"
       generatedResourceFolders="build/generated/res/resValues/androidTest/debug"
-      desugaredMethodsFiles="/home/runner/.gradle/caches/transforms-4/6e7ee295591e9326132de4b009a857fb/transformed/D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="/home/runner/.gradle/caches/transforms-4/2654d8d85113c2c13f8802ab40372b90/transformed/D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

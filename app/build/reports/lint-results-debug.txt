@@ -1,3 +1,29 @@
+/home/runner/work/roam-guard/roam-guard/app/src/main/java/com/roamguard/app/service/RoamingForegroundService.kt:100: Warning: Field requires API level 30 (current min is 26): android.telephony.PhoneStateListener#LISTEN_DISPLAY_INFO_CHANGED [InlinedApi]
+        telephonyManager?.listen(listener, PhoneStateListener.LISTEN_DISPLAY_INFO_CHANGED)
+                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "InlinedApi":
+   This check scans through all the Android API field references in the
+   application and flags certain constants, such as static final integers and
+   Strings, which were introduced in later versions. These will actually be
+   copied into the class files rather than being referenced, which means that
+   the value is available even when running on older devices. In some cases
+   that's fine, and in other cases it can result in a runtime crash or
+   incorrect behavior. It depends on the context, so consider the code
+   carefully and decide whether it's safe and can be suppressed or whether the
+   code needs to be guarded.
+
+   If you really want to use this API and don't need to support older devices
+   just set the minSdkVersion in your build.gradle or AndroidManifest.xml
+   files.
+
+   If your code is deliberately accessing newer APIs, and you have ensured
+   (e.g. with conditional execution) that this code will only ever be called
+   on a supported platform, then you can annotate your class or method with
+   the @TargetApi annotation specifying the local minimum SDK to apply, such
+   as @TargetApi(11), such that this check considers 11 rather than your
+   manifest file's minimum SDK as the required API level.
+
 /home/runner/work/roam-guard/roam-guard/app/build.gradle.kts:16: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
         targetSdk = 34
         ~~~~~~~~~~~~~~
@@ -36,6 +62,15 @@ agp = "8.5.0"
 agp = "8.5.0"
       ~~~~~~~
 /home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:2: Warning: A newer version of com.android.library than 8.5.0 is available: 9.2.1. (There is also a newer version of 8.5.𝑥 available, if upgrading to 9.2.1 is difficult: 8.5.2) [AndroidGradlePluginVersion]
+agp = "8.5.0"
+      ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:2: Warning: A newer version of com.android.test than 8.5.0 is available: 9.2.1. (There is also a newer version of 8.5.𝑥 available, if upgrading to 9.2.1 is difficult: 8.5.2) [AndroidGradlePluginVersion]
+agp = "8.5.0"
+      ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:2: Warning: A newer version of com.android.test than 8.5.0 is available: 9.2.1. (There is also a newer version of 8.5.𝑥 available, if upgrading to 9.2.1 is difficult: 8.5.2) [AndroidGradlePluginVersion]
+agp = "8.5.0"
+      ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:2: Warning: A newer version of com.android.test than 8.5.0 is available: 9.2.1. (There is also a newer version of 8.5.𝑥 available, if upgrading to 9.2.1 is difficult: 8.5.2) [AndroidGradlePluginVersion]
 agp = "8.5.0"
       ~~~~~~~
 
@@ -181,31 +216,49 @@ activityCompose = "1.9.0"
 /home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:19: Warning: A newer version of androidx.activity:activity-compose than 1.9.0 is available: 1.13.0 [GradleDependency]
 activityCompose = "1.9.0"
                   ~~~~~~~
-/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:21: Warning: A newer version of org.jetbrains.kotlinx.kover than 0.7.6 is available: 0.8.0 [GradleDependency]
-kover = "0.7.6"
-        ~~~~~~~
-/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:21: Warning: A newer version of org.jetbrains.kotlinx.kover than 0.7.6 is available: 0.8.0 [GradleDependency]
-kover = "0.7.6"
-        ~~~~~~~
-/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:21: Warning: A newer version of org.jetbrains.kotlinx.kover than 0.7.6 is available: 0.8.0 [GradleDependency]
-kover = "0.7.6"
-        ~~~~~~~
-/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:44: Warning: A newer version of androidx.hilt:hilt-navigation-compose than 1.2.0 is available: 1.3.0 [GradleDependency]
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:23: Warning: A newer version of androidx.test:core than 1.5.2 is available: 1.7.0 [GradleDependency]
+testRunner = "1.5.2"
+             ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:23: Warning: A newer version of androidx.test:core than 1.5.2 is available: 1.7.0 [GradleDependency]
+testRunner = "1.5.2"
+             ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:23: Warning: A newer version of androidx.test:core than 1.5.2 is available: 1.7.0 [GradleDependency]
+testRunner = "1.5.2"
+             ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:23: Warning: A newer version of androidx.test:runner than 1.5.2 is available: 1.7.0 [GradleDependency]
+testRunner = "1.5.2"
+             ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:23: Warning: A newer version of androidx.test:runner than 1.5.2 is available: 1.7.0 [GradleDependency]
+testRunner = "1.5.2"
+             ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:23: Warning: A newer version of androidx.test:runner than 1.5.2 is available: 1.7.0 [GradleDependency]
+testRunner = "1.5.2"
+             ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:24: Warning: A newer version of androidx.test:rules than 1.5.0 is available: 1.7.0 [GradleDependency]
+testRules = "1.5.0"
+            ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:24: Warning: A newer version of androidx.test:rules than 1.5.0 is available: 1.7.0 [GradleDependency]
+testRules = "1.5.0"
+            ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:24: Warning: A newer version of androidx.test:rules than 1.5.0 is available: 1.7.0 [GradleDependency]
+testRules = "1.5.0"
+            ~~~~~~~
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:49: Warning: A newer version of androidx.hilt:hilt-navigation-compose than 1.2.0 is available: 1.3.0 [GradleDependency]
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.2.0" }
                                                                                                  ~~~~~~~
-/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:44: Warning: A newer version of androidx.hilt:hilt-navigation-compose than 1.2.0 is available: 1.3.0 [GradleDependency]
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:49: Warning: A newer version of androidx.hilt:hilt-navigation-compose than 1.2.0 is available: 1.3.0 [GradleDependency]
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.2.0" }
                                                                                                  ~~~~~~~
-/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:44: Warning: A newer version of androidx.hilt:hilt-navigation-compose than 1.2.0 is available: 1.3.0 [GradleDependency]
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:49: Warning: A newer version of androidx.hilt:hilt-navigation-compose than 1.2.0 is available: 1.3.0 [GradleDependency]
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.2.0" }
                                                                                                  ~~~~~~~
-/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:45: Warning: A newer version of androidx.hilt:hilt-work than 1.2.0 is available: 1.3.0 [GradleDependency]
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:50: Warning: A newer version of androidx.hilt:hilt-work than 1.2.0 is available: 1.3.0 [GradleDependency]
 hilt-work = { group = "androidx.hilt", name = "hilt-work", version = "1.2.0" }
                                                                      ~~~~~~~
-/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:45: Warning: A newer version of androidx.hilt:hilt-work than 1.2.0 is available: 1.3.0 [GradleDependency]
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:50: Warning: A newer version of androidx.hilt:hilt-work than 1.2.0 is available: 1.3.0 [GradleDependency]
 hilt-work = { group = "androidx.hilt", name = "hilt-work", version = "1.2.0" }
                                                                      ~~~~~~~
-/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:45: Warning: A newer version of androidx.hilt:hilt-work than 1.2.0 is available: 1.3.0 [GradleDependency]
+/home/runner/work/roam-guard/roam-guard/gradle/libs.versions.toml:50: Warning: A newer version of androidx.hilt:hilt-work than 1.2.0 is available: 1.3.0 [GradleDependency]
 hilt-work = { group = "androidx.hilt", name = "hilt-work", version = "1.2.0" }
                                                                      ~~~~~~~
 
@@ -319,4 +372,4 @@ hilt-work = { group = "androidx.hilt", name = "hilt-work", version = "1.2.0" }
    application iconwill not show if your monochrome attribute is not also
    specified in android:roundIcon.
 
-0 errors, 86 warnings
+0 errors, 96 warnings
