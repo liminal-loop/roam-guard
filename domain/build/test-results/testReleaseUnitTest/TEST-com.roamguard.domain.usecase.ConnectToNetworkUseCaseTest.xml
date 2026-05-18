@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.roamguard.domain.usecase.ConnectToNetworkUseCaseTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-05-18T14:54:29" hostname="runnervmrw5os" time="0.052">
-  <properties/>
-  <testcase name="invoke returns true when connection succeeds" classname="com.roamguard.domain.usecase.ConnectToNetworkUseCaseTest" time="0.04"/>
-  <testcase name="invoke returns false when connection fails" classname="com.roamguard.domain.usecase.ConnectToNetworkUseCaseTest" time="0.012"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

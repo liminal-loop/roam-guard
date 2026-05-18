@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.roamguard.domain.usecase.CheckRoamingUseCaseTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-05-18T14:54:04" hostname="runnervmrw5os" time="0.108">
-  <properties/>
-  <testcase name="invoke returns denied when no network" classname="com.roamguard.domain.usecase.CheckRoamingUseCaseTest" time="0.094"/>
-  <testcase name="invoke returns needs confirmation when roaming on non-whitelisted network" classname="com.roamguard.domain.usecase.CheckRoamingUseCaseTest" time="0.007"/>
-  <testcase name="invoke returns allowed when on home network" classname="com.roamguard.domain.usecase.CheckRoamingUseCaseTest" time="0.006"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
