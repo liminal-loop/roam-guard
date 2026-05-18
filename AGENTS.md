@@ -1,208 +1,116 @@
-\# AGENTS.md for roam-guard
+This file defines the autonomous agents that collaborate on this repository.
 
+Each agent has a specific role, skills, and allowed tools.
 
 
-\## Project Overview
 
-Android app that prevents unwanted roaming charges by controlling which mobile networks the device can connect to outside the user's home country.
+\---
 
 
 
-\*\*Core idea:\*\*  
+\## Agent: android-architect
 
-\- User sets a home country (Home Location).  
+\- \*\*Role:\*\* Designs the high-level project structure, modules, and component relationships.
 
-\- User maintains a whitelist of allowed countries.  
+\- \*\*Capabilities:\*\*
 
-\- Whenever the phone tries to connect to a network outside the home country, the app checks the whitelist.  
+&#x20; - Creates multi-module Android project skeleton (Gradle, Kotlin DSL).
 
-&#x20; - If the country is allowed → connection proceeds silently.  
+&#x20; - Defines packages, Hilt modules, Room database, DataStore.
 
-&#x20; - If not allowed → a dialog asks the user for permission. Denying blocks the connection and temporarily disables data roaming until an allowed network is available.
+&#x20; - Sets up Compose navigation and theme.
 
+&#x20; - Ensures clean architecture (MVVM + Repository).
 
+\- \*\*Tools:\*\* File system, Gradle build files, Android project templates.
 
-\## Repository Structure
 
-\- `app/` – Main Android application module (UI, DI, navigation)
 
-\- `domain/` – Use cases, repository interfaces, models (MCC, Country)
+\## Agent: android-developer
 
-\- `data/` – Repository implementations, Room DB, DataStore, MCC data source
+\- \*\*Role:\*\* Implements features according to specifications in GitHub Issues.
 
-\- `common/` – Extensions, constants, utility functions
+\- \*\*Capabilities:\*\*
 
-\- `root-helper/` – Optional module for rooted device operations (network selection, roaming toggle via `su`)
+&#x20; - Writes Kotlin code (ViewModels, UseCases, Repositories, UI with Compose).
 
-\- `shizuku-helper/` – Optional module for Shizuku-based system API access
+&#x20; - Integrates system APIs: TelephonyManager, NetworkScan, Shizuku/root.
 
-\- `mcc-data/` – JSON file mapping MCCs to country names, ISO codes, and flag resources
+&#x20; - Implements background services, foreground notifications, WorkManager.
 
+&#x20; - Handles permissions and runtime checks.
 
+&#x20; - Adds unit and UI tests for all new code.
 
-\## Technology Stack
+\- \*\*Tools:\*\* Kotlin, Compose, Hilt, Room, MockK, Compose Testing.
 
-\- \*\*Language:\*\* Kotlin (100%)
 
-\- \*\*UI:\*\* Jetpack Compose (Material 3, dark mode support)
 
-\- \*\*Architecture:\*\* MVVM + Repository pattern, Hilt for DI
+\## Agent: sys-integration-specialist
 
-\- \*\*Async:\*\* Coroutines + Flow
+\- \*\*Role:\*\* Handles low-level system interactions (root, Shizuku, hidden APIs).
 
-\- \*\*Persistence:\*\* Room (whitelist, home country, permanent user decisions), DataStore (preferences)
+\- \*\*Capabilities:\*\*
 
-\- \*\*Network monitoring:\*\* `TelephonyManager`, `PhoneStateListener`, `NetworkScan` (API 28+)
+&#x20; - Creates `root-helper` and `shizuku-helper` modules.
 
-\- \*\*System interaction:\*\*  
+&#x20; - Executes `su` commands, reflection-based API calls.
 
-&#x20; - Root: `Runtime.getRuntime().exec("su")` for `cmd phone`, `settings`  
+&#x20; - Wraps dangerous operations behind safe interfaces.
 
-&#x20; - Shizuku: `ShizukuBinder`, reflection to hidden APIs (`setNetworkSelectionModeManual`, `setDataRoamingEnabled`)
+&#x20; - Provides fallback detection if root/Shizuku is unavailable.
 
-\- \*\*Background work:\*\* Foreground service with ongoing notification, WorkManager for periodic scans
+\- \*\*Tools:\*\* ADB, Shell commands, reflection, Shizuku SDK.
 
-\- \*\*Testing:\*\* JUnit5, MockK, Compose UI testing, fake TelephonyManager
 
 
+\## Agent: qa-engineer
 
-\## Key Functional Requirements
+\- \*\*Role:\*\* Ensures code quality, test coverage, and CI pipeline health.
 
+\- \*\*Capabilities:\*\*
 
+&#x20; - Reviews PRs for coding standards, architecture violations, security issues.
 
-\### 1. Onboarding \& Configuration
+&#x20; - Runs and maintains GitHub Actions workflows (build, test, lint).
 
-\- First launch: select home country from a searchable list (MCC-based).
+&#x20; - Configures detekt, ktlint, and code coverage reports.
 
-\- Configure whitelist: multi-select countries (by name/flag). Default: home country plus any explicitly added.
+&#x20; - Writes integration tests and end-to-end scenarios.
 
-\- Option to update MCC dataset from a GitHub release asset.
+\- \*\*Tools:\*\* GitHub Actions, Gradle, static analysis tools.
 
 
 
-\### 2. Interactive Roaming Control
+\## Agent: docs-translator
 
-\- \*\*Detection:\*\* Monitor `TelephonyManager.isNetworkRoaming()` and current MCC.
+\- \*\*Role:\*\* Maintains multilingual documentation (English, German) and user-facing strings.
 
-\- \*\*Home network?\*\* → never block or prompt.
+\- \*\*Capabilities:\*\*
 
-\- \*\*Roaming \& MCC in whitelist?\*\* → allow silently.
+&#x20; - Manages `strings.xml` and Compose string resources.
 
-\- \*\*Roaming \& MCC NOT in whitelist?\*\* → Show dialog:
+&#x20; - Writes README, CONTRIBUTING, and in-app help.
 
-&#x20; - "The device wants to connect to a network in \[Country]. Allow this connection?"
+&#x20; - Translates UI strings and documentation between EN and DE.
 
-&#x20; - Buttons: \*Allow\* / \*Deny\*
+\- \*\*Tools:\*\* Android resource files, Markdown.
 
-&#x20; - Checkbox: "Always allow for this country" (adds to whitelist permanently).
 
-\- \*\*Dialog timing:\*\* The app must prevent the device from actually registering on the disallowed network until the user responds. Achieve this by forcing manual network selection mode or temporarily disabling data roaming.
 
+\---
 
 
-\### 3. Deny Handling
 
-\- If user denies: immediately scan for available networks.  
+\*\*Coordination rules:\*\*
 
-&#x20; - Prefer a network from the home country or whitelist.  
+\- All agents work on feature branches and open pull requests.
 
-&#x20; - If none found, disable data roaming (`ConnectivityManager.setDataRoamingEnabled(false)` or via root/Shizuku).  
+\- An agent must not merge its own PR; a different agent reviews and merges.
 
-\- Periodically re-check; re-enable roaming when an allowed network appears.
+\- The `android-architect` agent sets up the initial structure before feature work begins.
 
+\- Every feature request must be submitted as a GitHub Issue with a clear title and description.
 
-
-\### 4. Manual Network Selection
-
-\- Dedicated screen listing currently visible networks with country flag, name, MCC/MNC, and whitelist status.
-
-\- User can tap any network to trigger the same allow/deny flow.
-
-
-
-\### 5. Persistent Decisions
-
-\- "Always allow" decisions are stored in Room (added to whitelist) and can be reviewed/revoked in settings.
-
-\- Temporary denies are not persisted; the app asks again next time.
-
-
-
-\## Non-Functional Requirements
-
-\- \*\*Permissions:\*\*  
-
-&#x20; - `ACCESS\_FINE\_LOCATION` (for network scanning on Android 9+)  
-
-&#x20; - `READ\_PHONE\_STATE` (to read network info)  
-
-&#x20; - `FOREGROUND\_SERVICE`  
-
-&#x20; - Root or Shizuku (explained clearly to user).  
-
-\- \*\*Privacy:\*\* No analytics, no network calls except optional MCC data fetch. All data stays on device.
-
-\- \*\*Localization:\*\* English and German at minimum.
-
-\- \*\*Battery:\*\* Adaptive scan intervals (15–60 seconds), paused when screen off and connected to allowed network.
-
-\- \*\*Fallback mode:\*\* If required system access is missing, app runs in monitoring-only mode with manual recommendations.
-
-
-
-\## Coding Standards \& Best Practices
-
-\- Follow Kotlin coding conventions and Android Kotlin style guide.
-
-\- Use `ViewModel` with `StateFlow` for UI state.
-
-\- Inject dependencies with Hilt; provide test doubles for all external services.
-
-\- Keep modules decoupled; domain layer must have zero Android dependencies.
-
-\- Write unit tests for all ViewModels and Use Cases, integration tests for repositories, and UI tests for critical flows.
-
-\- Use `detekt` and `ktlint` for static analysis (configured in CI).
-
-\- Commit messages follow conventional commits (`feat:`, `fix:`, `docs:`, `test:`).
-
-
-
-\## CI/CD (GitHub Actions)
-
-\- \*\*Build \& Test:\*\* Trigger on push to `main` and pull requests. Run `./gradlew test lintDebug`.
-
-\- \*\*Release:\*\* When a tag like `v\*` is pushed, build signed APK and create a GitHub Release with the APK and changelog.
-
-\- \*\*MCC Data Update:\*\* Scheduled workflow that checks for updates to `mcc-data/countries.json` and opens a PR if changed.
-
-
-
-\## Agent Instructions
-
-You are an autonomous developer agent. Your tasks are defined in GitHub Issues.
-
-
-
-\- Read this AGENTS.md first to understand the entire project.
-
-\- When asked to implement a feature, create a detailed plan, then produce the necessary code changes in a new branch and open a pull request.
-
-\- Always add or update unit tests for the code you change.
-
-\- Follow the project structure and patterns described above.
-
-\- Do not introduce new technologies or modules without explicit approval.
-
-\- If you encounter unclear requirements, ask clarifying questions in the issue comments before proceeding.
-
-\- Keep the README.md up to date with build instructions and feature summary.
-
-
-
-Initial Issue Template for this project:
-
-\*\*Title:\*\* Implement core interactive roaming control
-
-\*\*Description:\*\* As described in AGENTS.md, implement the complete interactive roaming whitelist system including onboarding, background service, dialog prompts, allow/deny logic, manual network selection, and settings. Set up the initial project structure with all modules, Hilt, Room, Compose, and the GitHub Actions CI pipeline.
+\- Agents pick up Issues by commenting “/opencode claim” and then begin implementation.
 
