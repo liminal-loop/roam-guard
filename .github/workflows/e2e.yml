@@ -25,7 +25,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build debug APK with coverage
-        run: ./gradlew :app:assembleDebug :app:assembleDebugAndroidTest
+        run: ./gradlew :app:assembleDebug
 
       - name: Run E2E tests on emulator
         uses: reactivecircus/android-emulator-runner@v2
@@ -88,20 +88,32 @@ PYEOF
       - name: Generate E2E JaCoCo Coverage Summary
         if: always()
         run: |
-          if [ -f app/build/outputs/code-coverage/connected/coverage.ec ]; then
-            ./gradlew :app:createDebugCoverageReport
+          COVERAGE_EC_SRC="e2e-tests/build/outputs/code-coverage/connected/coverage.ec"
+          COVERAGE_EC_DST="app/build/outputs/code-coverage/connected/coverage.ec"
+          COVERAGE_REPORT_XML="app/build/reports/coverage/androidTest/debug/report.xml"
+          if [ -f "$COVERAGE_EC_SRC" ]; then
+            echo "Found coverage.ec in e2e-tests module, copying to app module..."
+            mkdir -p "$(dirname "$COVERAGE_EC_DST")"
+            cp "$COVERAGE_EC_SRC" "$COVERAGE_EC_DST"
+          fi
+          if [ -f "$COVERAGE_EC_DST" ]; then
+            # Generate report without re-running tests (createDebugCoverageReport depends on connectedDebug)
+            ./gradlew :app:createDebugCoverageReport -x :app:connectedDebug 2>/dev/null || \
+              ./gradlew :app:createDebugCoverageReport 2>/dev/null || true
+          else
+            echo "No E2E coverage data available" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ -f "$COVERAGE_REPORT_XML" ]; then
             echo "## E2E JaCoCo Coverage" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             COVERAGE=$(python3 -c "
 import xml.etree.ElementTree as ET
-tree = ET.parse('app/build/reports/coverage/androidTest/debug/report.xml')
+tree = ET.parse('$COVERAGE_REPORT_XML')
 root = tree.getroot()
 line_rate = float(root.get('line-rate', '0'))
 print(f'{line_rate*100:.1f}%')
 " 2>/dev/null || echo "N/A")
             echo "**App Module E2E Coverage:** $COVERAGE" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "No E2E coverage data available" >> $GITHUB_STEP_SUMMARY
           fi
 
       - name: Upload E2E coverage report
@@ -112,6 +124,7 @@ print(f'{line_rate*100:.1f}%')
           path: |
             app/build/reports/coverage/
             app/build/outputs/code-coverage/
+            e2e-tests/build/outputs/code-coverage/
 
       - name: Upload E2E test results
         if: always()
