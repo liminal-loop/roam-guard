@@ -31,6 +31,7 @@ android {
         }
         debug {
             isDebuggable = true
+            isTestCoverageEnabled = true
         }
     }
 
