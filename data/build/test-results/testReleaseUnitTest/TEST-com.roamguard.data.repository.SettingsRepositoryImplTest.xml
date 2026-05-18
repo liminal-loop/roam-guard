@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.roamguard.data.repository.SettingsRepositoryImplTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-05-18T14:54:19" hostname="runnervmrw5os" time="0.519">
+  <properties/>
+  <testcase name="setServiceEnabled delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.41"/>
+  <testcase name="setScanInterval delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.018"/>
+  <testcase name="scanIntervalSeconds delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.016"/>
+  <testcase name="isServiceEnabled delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.008"/>
+  <testcase name="isOnboardingComplete delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.007"/>
+  <testcase name="setOnboardingComplete delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.06"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

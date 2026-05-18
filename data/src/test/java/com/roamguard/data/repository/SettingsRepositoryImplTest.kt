@@ -16,7 +16,7 @@ import org.junit.Test
 
 class SettingsRepositoryImplTest {
 
-    private val dataStore: PreferencesDataStore = mockk()
+    private val dataStore: PreferencesDataStore = mockk(relaxed = true)
     private lateinit var repository: SettingsRepositoryImpl
 
     @Before
@@ -27,6 +27,7 @@ class SettingsRepositoryImplTest {
     @Test
     fun `isOnboardingComplete delegates to dataStore`() = runTest {
         every { dataStore.isOnboardingComplete } returns flowOf(true)
+        repository = SettingsRepositoryImpl(dataStore)
 
         val result = repository.isOnboardingComplete.first()
 
@@ -36,6 +37,7 @@ class SettingsRepositoryImplTest {
     @Test
     fun `isServiceEnabled delegates to dataStore`() = runTest {
         every { dataStore.isServiceEnabled } returns flowOf(false)
+        repository = SettingsRepositoryImpl(dataStore)
 
         val result = repository.isServiceEnabled.first()
 
@@ -45,6 +47,7 @@ class SettingsRepositoryImplTest {
     @Test
     fun `scanIntervalSeconds delegates to dataStore`() = runTest {
         every { dataStore.scanInterval } returns flowOf(45)
+        repository = SettingsRepositoryImpl(dataStore)
 
         val result = repository.scanIntervalSeconds.first()
 

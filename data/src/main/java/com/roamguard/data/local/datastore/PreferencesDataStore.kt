@@ -11,6 +11,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.roamguard.common.util.Constants
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -88,9 +89,6 @@ class PreferencesDataStore @Inject constructor(
     }
 
     suspend fun hasBeenPrompted(mcc: Int): Boolean {
-        return promptedMccs.let { flow ->
-            flow.collect { return it.contains(mcc) }
-            false
-        }
+        return promptedMccs.first().contains(mcc)
     }
 }

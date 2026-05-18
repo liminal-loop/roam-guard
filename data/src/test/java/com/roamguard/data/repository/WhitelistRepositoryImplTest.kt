@@ -8,6 +8,7 @@ import com.roamguard.domain.model.HomeCountry
 import com.roamguard.domain.model.WhitelistCountry
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
@@ -20,8 +21,8 @@ import org.junit.Test
 
 class WhitelistRepositoryImplTest {
 
-    private val homeCountryDao: HomeCountryDao = mockk()
-    private val whitelistDao: WhitelistDao = mockk()
+    private val homeCountryDao: HomeCountryDao = mockk(relaxed = true)
+    private val whitelistDao: WhitelistDao = mockk(relaxed = true)
     private lateinit var repository: WhitelistRepositoryImpl
 
     @Before
@@ -32,7 +33,8 @@ class WhitelistRepositoryImplTest {
     @Test
     fun `homeCountry maps entity to domain model`() = runTest {
         val entity = HomeCountryEntity(id = 1L, mcc = 262, countryName = "Germany", countryCode = "DE")
-        coEvery { homeCountryDao.getHomeCountry() } returns flowOf(entity)
+        every { homeCountryDao.getHomeCountry() } returns flowOf(entity)
+        repository = WhitelistRepositoryImpl(homeCountryDao, whitelistDao)
 
         val result = repository.homeCountry.first()
 
@@ -44,7 +46,8 @@ class WhitelistRepositoryImplTest {
 
     @Test
     fun `homeCountry returns null when no entity`() = runTest {
-        coEvery { homeCountryDao.getHomeCountry() } returns flowOf(null)
+        every { homeCountryDao.getHomeCountry() } returns flowOf(null)
+        repository = WhitelistRepositoryImpl(homeCountryDao, whitelistDao)
 
         val result = repository.homeCountry.first()
 
@@ -57,7 +60,8 @@ class WhitelistRepositoryImplTest {
             WhitelistCountryEntity(id = 1L, mcc = 208, countryName = "France", countryCode = "FR"),
             WhitelistCountryEntity(id = 2L, mcc = 214, countryName = "Spain", countryCode = "ES")
         )
-        coEvery { whitelistDao.getAll() } returns flowOf(entities)
+        every { whitelistDao.getAll() } returns flowOf(entities)
+        repository = WhitelistRepositoryImpl(homeCountryDao, whitelistDao)
 
         val result = repository.whitelist.first()
 
@@ -69,7 +73,6 @@ class WhitelistRepositoryImplTest {
     @Test
     fun `setHomeCountry converts and delegates to DAO`() = runTest {
         val country = HomeCountry(mcc = 262, countryName = "Germany", countryCode = "DE")
-        coEvery { homeCountryDao.setHomeCountry(any()) } returns Unit
 
         repository.setHomeCountry(country)
 
@@ -83,7 +86,6 @@ class WhitelistRepositoryImplTest {
     @Test
     fun `addToWhitelist converts and delegates to DAO`() = runTest {
         val country = WhitelistCountry(mcc = 208, countryName = "France", countryCode = "FR")
-        coEvery { whitelistDao.insert(any()) } returns Unit
 
         repository.addToWhitelist(country)
 
@@ -96,8 +98,6 @@ class WhitelistRepositoryImplTest {
 
     @Test
     fun `removeFromWhitelist delegates to DAO`() = runTest {
-        coEvery { whitelistDao.deleteByMcc(any()) } returns Unit
-
         repository.removeFromWhitelist(208)
 
         coVerify { whitelistDao.deleteByMcc(208) }

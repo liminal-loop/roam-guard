@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.roamguard.data-release-21:/layout/notification_template_part_time.xml",
+        "source": "com.roamguard.data-core-1.8.0-11:/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "com.roamguard.data-release-21:/layout/custom_dialog.xml",
+        "source": "com.roamguard.data-core-1.8.0-11:/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "com.roamguard.data-release-21:/layout/notification_template_part_chronometer.xml",
+        "source": "com.roamguard.data-core-1.8.0-11:/layout/notification_template_part_chronometer.xml"
+    }
+]

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.roamguard.domain.model.ModelsTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-05-18T14:54:04" hostname="runnervmrw5os" time="0.029">
+  <properties/>
+  <testcase name="RoamingDecision Allowed is a singleton" classname="com.roamguard.domain.model.ModelsTest" time="0.002"/>
+  <testcase name="RoamingDecision NeedsConfirmation has network and country" classname="com.roamguard.domain.model.ModelsTest" time="0.003"/>
+  <testcase name="Country model is created correctly" classname="com.roamguard.domain.model.ModelsTest" time="0.002"/>
+  <testcase name="WhitelistEntry model is created correctly" classname="com.roamguard.domain.model.ModelsTest" time="0.002"/>
+  <testcase name="HandleRoamingResult variants exist" classname="com.roamguard.domain.model.ModelsTest" time="0.003"/>
+  <testcase name="HomeCountry can have custom id" classname="com.roamguard.domain.model.ModelsTest" time="0.0"/>
+  <testcase name="NetworkInfo is created with correct values" classname="com.roamguard.domain.model.ModelsTest" time="0.0"/>
+  <testcase name="HomeCountry is created with defaults" classname="com.roamguard.domain.model.ModelsTest" time="0.002"/>
+  <testcase name="RoamingDecision Denied has reason" classname="com.roamguard.domain.model.ModelsTest" time="0.012"/>
+  <testcase name="WhitelistCountry is created with defaults" classname="com.roamguard.domain.model.ModelsTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

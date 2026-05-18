@@ -5,6 +5,7 @@ import com.roamguard.domain.model.WhitelistCountry
 import com.roamguard.domain.repository.WhitelistRepository
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
@@ -17,7 +18,7 @@ import org.junit.Test
 
 class ManageWhitelistUseCaseTest {
 
-    private val whitelistRepository: WhitelistRepository = mockk()
+    private val whitelistRepository: WhitelistRepository = mockk(relaxed = true)
     private lateinit var useCase: ManageWhitelistUseCase
 
     @Before
@@ -28,7 +29,8 @@ class ManageWhitelistUseCaseTest {
     @Test
     fun `home country emits from repository`() = runTest {
         val home = HomeCountry(mcc = 262, countryName = "Germany", countryCode = "DE")
-        coEvery { whitelistRepository.homeCountry } returns flowOf(home)
+        every { whitelistRepository.homeCountry } returns flowOf(home)
+        useCase = ManageWhitelistUseCase(whitelistRepository)
 
         val result = useCase.homeCountry.first()
 
@@ -41,7 +43,8 @@ class ManageWhitelistUseCaseTest {
             WhitelistCountry(mcc = 208, countryName = "France", countryCode = "FR"),
             WhitelistCountry(mcc = 214, countryName = "Spain", countryCode = "ES")
         )
-        coEvery { whitelistRepository.whitelist } returns flowOf(entries)
+        every { whitelistRepository.whitelist } returns flowOf(entries)
+        useCase = ManageWhitelistUseCase(whitelistRepository)
 
         val result = useCase.whitelist.first()
 

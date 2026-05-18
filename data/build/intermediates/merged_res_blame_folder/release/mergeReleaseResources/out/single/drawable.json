@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "com.roamguard.data-release-21:/drawable/notification_icon_background.xml",
+        "source": "com.roamguard.data-core-1.8.0-11:/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "com.roamguard.data-release-21:/drawable/notification_tile_bg.xml",
+        "source": "com.roamguard.data-core-1.8.0-11:/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "com.roamguard.data-release-21:/drawable/notification_bg_low.xml",
+        "source": "com.roamguard.data-core-1.8.0-11:/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "com.roamguard.data-release-21:/drawable/notification_bg.xml",
+        "source": "com.roamguard.data-core-1.8.0-11:/drawable/notification_bg.xml"
+    }
+]

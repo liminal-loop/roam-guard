@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.roamguard.data.repository.WhitelistRepositoryImplTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-05-18T14:54:20" hostname="runnervmrw5os" time="0.244">
+  <properties/>
+  <testcase name="whitelist maps entities to domain models" classname="com.roamguard.data.repository.WhitelistRepositoryImplTest" time="0.161"/>
+  <testcase name="setHomeCountry converts and delegates to DAO" classname="com.roamguard.data.repository.WhitelistRepositoryImplTest" time="0.022"/>
+  <testcase name="homeCountry returns null when no entity" classname="com.roamguard.data.repository.WhitelistRepositoryImplTest" time="0.008"/>
+  <testcase name="isWhitelisted returns true when exists" classname="com.roamguard.data.repository.WhitelistRepositoryImplTest" time="0.011"/>
+  <testcase name="isWhitelisted returns false when not exists" classname="com.roamguard.data.repository.WhitelistRepositoryImplTest" time="0.009"/>
+  <testcase name="addToWhitelist converts and delegates to DAO" classname="com.roamguard.data.repository.WhitelistRepositoryImplTest" time="0.01"/>
+  <testcase name="removeFromWhitelist delegates to DAO" classname="com.roamguard.data.repository.WhitelistRepositoryImplTest" time="0.012"/>
+  <testcase name="homeCountry maps entity to domain model" classname="com.roamguard.data.repository.WhitelistRepositoryImplTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

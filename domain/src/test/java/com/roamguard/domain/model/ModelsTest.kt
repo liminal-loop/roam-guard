@@ -3,6 +3,7 @@ package com.roamguard.domain.model
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
+import com.roamguard.domain.usecase.HandleRoamingResult
 import org.junit.Test
 
 class ModelsTest {

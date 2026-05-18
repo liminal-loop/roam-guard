@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.room.CoroutinesRoom;
 import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
+import androidx.room.RoomDatabaseKt;
 import androidx.room.RoomSQLiteQuery;
 import androidx.room.SharedSQLiteStatement;
 import androidx.room.util.CursorUtil;
@@ -41,7 +42,7 @@ public final class HomeCountryDao_Impl implements HomeCountryDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `home_country` (`id`,`mcc`,`country_name`,`country_code`) VALUES (nullif(?, 0),?,?,?)";
+        return "INSERT OR ABORT INTO `home_country` (`id`,`mcc`,`country_name`,`country_code`) VALUES (nullif(?, 0),?,?,?)";
       }
 
       @Override
@@ -64,7 +65,7 @@ public final class HomeCountryDao_Impl implements HomeCountryDao {
   }
 
   @Override
-  public Object setHomeCountry(final HomeCountryEntity country,
+  public Object doInsert(final HomeCountryEntity country,
       final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
@@ -80,6 +81,12 @@ public final class HomeCountryDao_Impl implements HomeCountryDao {
         }
       }
     }, $completion);
+  }
+
+  @Override
+  public Object setHomeCountry(final HomeCountryEntity country,
+      final Continuation<? super Unit> $completion) {
+    return RoomDatabaseKt.withTransaction(__db, (__cont) -> HomeCountryDao.DefaultImpls.setHomeCountry(HomeCountryDao_Impl.this, country, __cont), $completion);
   }
 
   @Override

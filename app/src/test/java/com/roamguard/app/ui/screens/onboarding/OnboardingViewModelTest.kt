@@ -7,29 +7,40 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
 class OnboardingViewModelTest {
 
+    private val testDispatcher = UnconfinedTestDispatcher()
     private val settingsRepository: SettingsRepository = mockk()
     private val whitelistRepository: WhitelistRepository = mockk()
     private lateinit var viewModel: OnboardingViewModel
 
     @Before
     fun setup() {
-        every { settingsRepository.isOnboardingComplete } returns flowOf(null)
+        Dispatchers.setMain(testDispatcher)
+        every { settingsRepository.isOnboardingComplete } returns flowOf(false)
         every { whitelistRepository.homeCountry } returns flowOf(null)
         every { whitelistRepository.whitelist } returns flowOf(emptyList())
         coEvery { settingsRepository.setOnboardingComplete(any()) } returns Unit
         coEvery { whitelistRepository.setHomeCountry(any()) } returns Unit
         viewModel = OnboardingViewModel(settingsRepository, whitelistRepository)
+    }
+
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
     }
 
     @Test
@@ -53,7 +64,7 @@ class OnboardingViewModelTest {
     }
 
     @Test
-    fun `completeOnboarding sets home country and marks complete`() = runTest {
+    fun `completeOnboarding sets home country and marks complete`() = runTest(testDispatcher) {
         viewModel.selectCountry(262)
         viewModel.completeOnboarding()
 
@@ -63,7 +74,7 @@ class OnboardingViewModelTest {
     }
 
     @Test
-    fun `completeOnboarding does nothing without selected country`() = runTest {
+    fun `completeOnboarding does nothing without selected country`() = runTest(testDispatcher) {
         viewModel.completeOnboarding()
 
         coVerify(exactly = 0) { whitelistRepository.setHomeCountry(any()) }
@@ -71,7 +82,7 @@ class OnboardingViewModelTest {
     }
 
     @Test
-    fun `skipOnboarding marks complete without setting home country`() = runTest {
+    fun `skipOnboarding marks complete without setting home country`() = runTest(testDispatcher) {
         viewModel.skipOnboarding()
 
         coVerify(exactly = 0) { whitelistRepository.setHomeCountry(any()) }

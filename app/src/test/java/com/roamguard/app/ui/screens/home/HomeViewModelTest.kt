@@ -11,9 +11,14 @@ import com.roamguard.domain.usecase.CheckRoamingUseCase
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -23,6 +28,7 @@ import org.junit.Test
 
 class HomeViewModelTest {
 
+    private val testDispatcher = UnconfinedTestDispatcher()
     private val application: Application = mockk()
     private val checkRoamingUseCase: CheckRoamingUseCase = mockk()
     private val networkRepository: NetworkRepository = mockk()
@@ -32,6 +38,7 @@ class HomeViewModelTest {
 
     @Before
     fun setup() {
+        Dispatchers.setMain(testDispatcher)
         every { whitelistRepository.homeCountry } returns flowOf(
             HomeCountry(mcc = 262, countryName = "Germany", countryCode = "DE")
         )
@@ -44,9 +51,14 @@ class HomeViewModelTest {
         )
     }
 
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
+    }
+
     @Test
-    fun `homeCountry loads from repository`() {
-        val home = viewModel.homeCountry.value
+    fun `homeCountry loads from repository`() = runTest(testDispatcher) {
+        val home = viewModel.homeCountry.first()
 
         assertNotNull(home)
         assertEquals("Germany", home?.countryName)
@@ -58,7 +70,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `checkRoaming shows dialog when needs confirmation`() = runTest {
+    fun `checkRoaming shows dialog when needs confirmation`() = runTest(testDispatcher) {
         val network = NetworkInfo(208, 15, "France", "Orange", "20815", isRoaming = true)
         coEvery { checkRoamingUseCase() } returns RoamingDecision.NeedsConfirmation(network, "France")
 
@@ -70,7 +82,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `checkRoaming does not show dialog when allowed`() = runTest {
+    fun `checkRoaming does not show dialog when allowed`() = runTest(testDispatcher) {
         coEvery { checkRoamingUseCase() } returns RoamingDecision.Allowed
 
         viewModel.checkRoaming()
@@ -79,7 +91,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `checkRoaming does not show dialog when denied`() = runTest {
+    fun `checkRoaming does not show dialog when denied`() = runTest(testDispatcher) {
         coEvery { checkRoamingUseCase() } returns RoamingDecision.Denied("No network")
 
         viewModel.checkRoaming()
@@ -95,7 +107,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `denyNetwork hides dialog`() = runTest {
+    fun `denyNetwork hides dialog`() = runTest(testDispatcher) {
         coEvery { networkRepository.recheckAndReconnect() } returns true
 
         viewModel.denyNetwork()
