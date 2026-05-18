@@ -2,13 +2,12 @@ package com.roamguard.data.repository
 
 import android.content.Context
 import android.telephony.TelephonyManager
+import com.roamguard.common.system.SystemNetworkController
 import com.roamguard.common.util.MccCountryMapper
 import com.roamguard.domain.model.NetworkInfo
 import com.roamguard.domain.model.RoamingDecision
 import com.roamguard.domain.repository.NetworkRepository
 import com.roamguard.domain.repository.WhitelistRepository
-import com.roamguard.root.RootHelper
-import com.roamguard.shizuku.ShizukuHelper
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,8 +20,7 @@ import javax.inject.Singleton
 class NetworkRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context,
     private val whitelistRepository: WhitelistRepository,
-    private val rootHelper: RootHelper,
-    private val shizukuHelper: ShizukuHelper
+    private val systemController: SystemNetworkController
 ) : NetworkRepository {
 
     private val telephonyManager: TelephonyManager? by lazy {
@@ -100,25 +98,11 @@ class NetworkRepositoryImpl @Inject constructor(
     }
 
     override suspend fun connectToNetwork(plmn: String): Boolean {
-        if (rootHelper.isAvailable) {
-            return rootHelper.setManualNetworkSelection(plmn)
-        }
-        shizukuHelper.init(context)
-        if (shizukuHelper.isAvailable) {
-            return shizukuHelper.setNetworkSelectionModeManual(plmn)
-        }
-        return false
+        return systemController.forceManualNetworkSelection(plmn)
     }
 
     override suspend fun setDataRoamingEnabled(enabled: Boolean): Boolean {
-        if (rootHelper.isAvailable) {
-            return rootHelper.setDataRoaming(enabled)
-        }
-        shizukuHelper.init(context)
-        if (shizukuHelper.isAvailable) {
-            return shizukuHelper.setDataRoamingEnabled(0, enabled)
-        }
-        return false
+        return systemController.setDataRoaming(enabled)
     }
 
     override suspend fun evaluateRoaming(): RoamingDecision {

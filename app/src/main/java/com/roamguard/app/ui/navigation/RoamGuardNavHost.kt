@@ -81,8 +81,7 @@ fun RoamGuardNavHost() {
         composable(Routes.SETTINGS) {
             SettingsScreen(
                 viewModel = hiltViewModel(),
-                onBack = { navController.popBackStack() },
-                onNavigateToWhitelist = { navController.navigate(Routes.WHITELIST) }
+                onBack = { navController.popBackStack() }
             )
         }
     }

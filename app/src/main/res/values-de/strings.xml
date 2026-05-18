@@ -29,4 +29,19 @@
     <string name="deny_action">Ablehnen</string>
     <string name="networks_tab">Netzwerke</string>
     <string name="whitelist_tab">Whitelist</string>
+    <string name="settings_title">Einstellungen</string>
+    <string name="always_allowed_countries">Immer erlaubte Länder</string>
+    <string name="no_always_allowed_countries">Keine immer erlaubten Länder.\nÜber den Roaming-Dialog hinzugefügte Länder erscheinen hier.</string>
+    <string name="remove_action">Entfernen</string>
+    <string name="scan_action">Scannen</string>
+    <string name="home_network_label">Zuhause</string>
+    <string name="whitelisted_label">Whitelist</string>
+    <string name="root_available">Verfügbar</string>
+    <string name="root_not_checked">Nicht geprüft</string>
+    <string name="root_status">Root: %s</string>
+    <string name="settings_label">Einstellungen</string>
+    <string name="mcc_format">MCC: %d</string>
+    <string name="mcc_country_format">%s (MCC: %d)</string>
+    <string name="home_not_set">Nicht festgelegt</string>
+    <string name="back_navigation">Zurück</string>
 </resources>

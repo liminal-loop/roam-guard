@@ -51,7 +51,7 @@ class ShizukuApiReflector {
                 Int::class.javaPrimitiveType,
                 Boolean::class.javaPrimitiveType
             )
-            method.isAccessible = true
+            method.trySetAccessible()
             method.invoke(tm, subId, enabled) as Boolean
         } catch (e: Exception) {
             false

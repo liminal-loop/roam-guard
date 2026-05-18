@@ -3,6 +3,8 @@ package com.roamguard.data.local.mcc
 import android.content.Context
 import com.roamguard.mcc.MccEntry
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -28,8 +30,8 @@ class MccDatasetLoader @Inject constructor(
 
     fun getEntries(): List<MccEntry> = defaultEntries
 
-    suspend fun fetchFromUrl(url: String): List<MccEntry>? {
-        return try {
+    suspend fun fetchFromUrl(url: String): List<MccEntry>? = withContext(Dispatchers.IO) {
+        try {
             val connection = URL(url).openConnection() as HttpURLConnection
             connection.requestMethod = "GET"
             connection.connectTimeout = 10000

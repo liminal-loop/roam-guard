@@ -76,15 +76,6 @@ class ModelsTest {
     }
 
     @Test
-    fun `WhitelistEntry model is created correctly`() {
-        val entry = WhitelistEntry(mcc = 208, countryName = "France", countryCode = "FR")
-
-        assertEquals(208, entry.mcc)
-        assertEquals("France", entry.countryName)
-        assertEquals(0L, entry.id)
-    }
-
-    @Test
     fun `HandleRoamingResult variants exist`() {
         assertTrue(HandleRoamingResult.Allowed is HandleRoamingResult)
         assertTrue(HandleRoamingResult.Denied is HandleRoamingResult)

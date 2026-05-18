@@ -29,4 +29,19 @@
     <string name="deny_action">Deny</string>
     <string name="networks_tab">Networks</string>
     <string name="whitelist_tab">Whitelist</string>
+    <string name="settings_title">Settings</string>
+    <string name="always_allowed_countries">Always-Allowed Countries</string>
+    <string name="no_always_allowed_countries">No always-allowed countries.\nCountries added via the roaming dialog appear here.</string>
+    <string name="remove_action">Remove</string>
+    <string name="scan_action">Scan</string>
+    <string name="home_network_label">Home</string>
+    <string name="whitelisted_label">Whitelisted</string>
+    <string name="root_available">Available</string>
+    <string name="root_not_checked">Not checked</string>
+    <string name="root_status">Root: %s</string>
+    <string name="settings_label">Settings</string>
+    <string name="mcc_format">MCC: %d</string>
+    <string name="mcc_country_format">%s (MCC: %d)</string>
+    <string name="home_not_set">Not set</string>
+    <string name="back_navigation">Back</string>
 </resources>

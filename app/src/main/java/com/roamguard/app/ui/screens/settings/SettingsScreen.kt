@@ -26,24 +26,25 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.roamguard.app.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
     viewModel: SettingsViewModel,
-    onBack: () -> Unit,
-    onNavigateToWhitelist: () -> Unit
+    onBack: () -> Unit
 ) {
     val whitelist by viewModel.whitelist.collectAsState()
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Settings") },
+                title = { Text(stringResource(R.string.settings_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back_navigation))
                     }
                 }
             )
@@ -58,7 +59,7 @@ fun SettingsScreen(
         ) {
             item {
                 Text(
-                    text = "Always-Allowed Countries",
+                    text = stringResource(R.string.always_allowed_countries),
                     style = MaterialTheme.typography.titleMedium
                 )
                 Spacer(modifier = Modifier.height(8.dp))
@@ -79,7 +80,7 @@ fun SettingsScreen(
                                 style = MaterialTheme.typography.bodyLarge
                             )
                             Text(
-                                text = "MCC: ${country.mcc}",
+                                text = stringResource(R.string.mcc_format, country.mcc),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -87,7 +88,7 @@ fun SettingsScreen(
                         IconButton(onClick = { viewModel.removeFromWhitelist(country.mcc) }) {
                             Icon(
                                 Icons.Default.Delete,
-                                contentDescription = "Remove",
+                                contentDescription = stringResource(R.string.remove_action),
                                 tint = MaterialTheme.colorScheme.error
                             )
                         }
@@ -98,7 +99,7 @@ fun SettingsScreen(
             if (whitelist.isEmpty()) {
                 item {
                     Text(
-                        text = "No always-allowed countries.\nCountries added via the roaming dialog appear here.",
+                        text = stringResource(R.string.no_always_allowed_countries),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(vertical = 16.dp)

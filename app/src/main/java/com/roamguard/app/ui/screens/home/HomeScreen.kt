@@ -33,7 +33,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.roamguard.app.R
 
 @Composable
 fun HomeScreen(
@@ -73,14 +75,15 @@ fun HomeScreen(
                     Icon(Icons.Default.Home, contentDescription = null)
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "Home Country",
+                        text = stringResource(R.string.home_country_label),
                         style = MaterialTheme.typography.titleMedium
                     )
                 }
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = homeCountry?.let { "${it.countryName} (MCC: ${it.mcc})" }
-                        ?: "Not set",
+                    text = homeCountry?.let {
+                        stringResource(R.string.mcc_country_format, it.countryName, it.mcc)
+                    } ?: stringResource(R.string.home_not_set),
                     style = MaterialTheme.typography.bodyLarge
                 )
             }
@@ -99,7 +102,7 @@ fun HomeScreen(
                         Icon(Icons.Default.Shield, contentDescription = null)
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "Roaming Protection",
+                            text = stringResource(R.string.roaming_protection),
                             style = MaterialTheme.typography.titleMedium
                         )
                     }
@@ -115,7 +118,7 @@ fun HomeScreen(
             onClick = viewModel::checkRoaming,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Check Roaming Status")
+            Text(stringResource(R.string.check_roaming))
         }
 
         Row(
@@ -127,7 +130,7 @@ fun HomeScreen(
                 modifier = Modifier.weight(1f)
             ) {
                 Icon(Icons.AutoMirrored.Filled.List, contentDescription = null)
-                Text("  Whitelist")
+                Text("  ${stringResource(R.string.whitelist_tab)}")
             }
 
             OutlinedButton(
@@ -135,7 +138,7 @@ fun HomeScreen(
                 modifier = Modifier.weight(1f)
             ) {
                 Icon(Icons.Default.Language, contentDescription = null)
-                Text("  Networks")
+                Text("  ${stringResource(R.string.networks_tab)}")
             }
         }
 
@@ -144,7 +147,7 @@ fun HomeScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             Icon(Icons.Default.Settings, contentDescription = null)
-            Text("  Settings")
+            Text("  ${stringResource(R.string.settings_label)}")
         }
 
         Card(
@@ -155,17 +158,16 @@ fun HomeScreen(
                     Icon(Icons.Default.Settings, contentDescription = null)
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "System Access",
+                        text = stringResource(R.string.system_access),
                         style = MaterialTheme.typography.titleMedium
                     )
                 }
                 Spacer(modifier = Modifier.height(4.dp))
-                val rootAvailable = try {
-                    Class.forName("com.roamguard.root.RootHelper")
-                    true
-                } catch (e: Exception) { false }
                 Text(
-                    text = "Root: ${if (rootAvailable) "Available" else "Not checked"}",
+                    text = stringResource(
+                        R.string.root_status,
+                        stringResource(R.string.root_not_checked)
+                    ),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -184,10 +186,10 @@ fun RoamingConfirmationDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Roaming Detected") },
+        title = { Text(stringResource(R.string.roaming_detected_title)) },
         text = {
             Column {
-                Text("Connect to network in $country?")
+                Text(stringResource(R.string.roaming_detected_message, country))
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(
                     verticalAlignment = Alignment.CenterVertically
@@ -196,18 +198,18 @@ fun RoamingConfirmationDialog(
                         checked = alwaysAllow,
                         onCheckedChange = { alwaysAllow = it }
                     )
-                    Text("Always allow for this country")
+                    Text(stringResource(R.string.always_allow))
                 }
             }
         },
         confirmButton = {
             Button(onClick = { onAllow(alwaysAllow) }) {
-                Text("Allow")
+                Text(stringResource(R.string.allow_action))
             }
         },
         dismissButton = {
             TextButton(onClick = onDeny) {
-                Text("Deny")
+                Text(stringResource(R.string.deny_action))
             }
         }
     )
