@@ -8,6 +8,7 @@ Automatic roaming guard for Android — protects against unexpected roaming char
 [![E2E Coverage](https://img.shields.io/badge/e2e_coverage-50%25-yellowgreen)](https://github.com/liminal-loop/roam-guard/actions/workflows/e2e.yml)
 [![License Compliance](https://img.shields.io/badge/license_compliance-passing-brightgreen)](https://github.com/liminal-loop/roam-guard/actions/workflows/ci.yml)
 [![SBOM](https://img.shields.io/badge/sbom-available-blue)](https://github.com/liminal-loop/roam-guard/releases)
+[![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
 ## Tech Stack
