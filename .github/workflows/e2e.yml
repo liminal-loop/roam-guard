@@ -53,27 +53,27 @@ jobs:
           if [ -f build/test-results/ctrf-report.json ]; then
             echo "## E2E Test Results (CTRF)" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            python3 -c "
+            python3 << 'PYEOF' >> $GITHUB_STEP_SUMMARY
 import json
 with open('build/test-results/ctrf-report.json') as f:
     data = json.load(f)
 s = data['results']['summary']
-print(f'**Total:** {s[\"tests\"]} | **Passed:** {s[\"passed\"]} | **Failed:** {s[\"failed\"]} | **Skipped:** {s[\"skipped\"]}')
-print(f'**Duration:** {s[\"time\"][\"duration\"]}ms')
-print(f'**Suites:** {s[\"suites\"]}')
-            " >> $GITHUB_STEP_SUMMARY
+print(f'**Total:** {s["tests"]} | **Passed:** {s["passed"]} | **Failed:** {s["failed"]} | **Skipped:** {s["skipped"]}')
+print(f'**Duration:** {s["time"]["duration"]}ms')
+print(f'**Suites:** {s["suites"]}')
+PYEOF
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "### Individual Test Results" >> $GITHUB_STEP_SUMMARY
             echo "| Test | Status | Duration |" >> $GITHUB_STEP_SUMMARY
             echo "|---|---|---|" >> $GITHUB_STEP_SUMMARY
-            python3 -c "
+            python3 << 'PYEOF' >> $GITHUB_STEP_SUMMARY
 import json
 with open('build/test-results/ctrf-report.json') as f:
     data = json.load(f)
 for t in data['results']['tests']:
     icon = '✅' if t['status'] == 'passed' else '❌' if t['status'] == 'failed' else '⏭️'
-    print(f'| {icon} {t[\"name\"]} | {t[\"status\"]} | {t[\"duration\"]}ms |')
-            " >> $GITHUB_STEP_SUMMARY
+    print(f'| {icon} {t["name"]} | {t["status"]} | {t["duration"]}ms |')
+PYEOF
           else
             echo "No CTRF report generated" >> $GITHUB_STEP_SUMMARY
           fi
