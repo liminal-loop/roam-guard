@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.roamguard.data.repository.SettingsRepositoryImplTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-05-18T14:53:49" hostname="runnervmrw5os" time="5.195">
+<testsuite name="com.roamguard.data.repository.SettingsRepositoryImplTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-05-18T15:42:04" hostname="runnervmrw5os" time="0.374">
   <properties/>
-  <testcase name="setServiceEnabled delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="4.961"/>
-  <testcase name="setScanInterval delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.015"/>
-  <testcase name="scanIntervalSeconds delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.029"/>
-  <testcase name="isServiceEnabled delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.021"/>
-  <testcase name="isOnboardingComplete delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.012"/>
-  <testcase name="setOnboardingComplete delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.157"/>
+  <testcase name="setServiceEnabled delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.271"/>
+  <testcase name="setScanInterval delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.013"/>
+  <testcase name="scanIntervalSeconds delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.01"/>
+  <testcase name="isServiceEnabled delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.005"/>
+  <testcase name="isOnboardingComplete delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.005"/>
+  <testcase name="setOnboardingComplete delegates to dataStore" classname="com.roamguard.data.repository.SettingsRepositoryImplTest" time="0.067"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

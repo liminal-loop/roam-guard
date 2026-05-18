@@ -30,6 +30,11 @@ class ShizukuHelper @Inject constructor() {
         return reflector.setNetworkSelectionModeManual(plmn, subId)
     }
 
+    fun setNetworkSelectionModeAutomatic(): Boolean {
+        if (!isAvailable) return false
+        return reflector.setNetworkSelectionModeAutomatic()
+    }
+
     fun setDataRoamingEnabled(subId: Int, enabled: Boolean): Boolean {
         if (!isAvailable) return false
         return reflector.setDataRoamingEnabled(subId, enabled)
@@ -38,6 +43,11 @@ class ShizukuHelper @Inject constructor() {
     fun getCurrentNetworkMcc(): Int? {
         if (!isAvailable) return null
         return reflector.getNetworkOperatorMcc()
+    }
+
+    fun getCurrentNetworkCountry(): String? {
+        if (!isAvailable) return null
+        return reflector.getNetworkCountryIso()
     }
 
     fun isNetworkRoaming(): Boolean {

@@ -64,6 +64,14 @@ class RootCommandExecutor {
         }
         return null
     }
+
+    fun getCurrentNetworkCountry(): String? {
+        val result = executeCommand("dumpsys telephony.registry | awk '/mCountryIso/{print \$2}'")
+        if (result.success && result.output.isNotBlank()) {
+            return result.output.trim().takeIf { it.length == 2 }
+        }
+        return null
+    }
 }
 
 data class RootResult(

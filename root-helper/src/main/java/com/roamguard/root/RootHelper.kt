@@ -29,6 +29,11 @@ class RootHelper @Inject constructor(
         return executor.getCurrentNetworkMcc()
     }
 
+    fun getCurrentNetworkCountry(): String? {
+        if (!isAvailable) return null
+        return executor.getCurrentNetworkCountry()
+    }
+
     fun executeRawCommand(command: String): RootResult {
         if (!isAvailable) return RootResult(false, "", "Root not available", -1)
         return executor.executeCommand(command)

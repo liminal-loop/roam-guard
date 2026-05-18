@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
+import com.roamguard.app.di.SystemControllerModule_ProvideSystemNetworkControllerFactory;
 import com.roamguard.app.service.RoamingForegroundService;
 import com.roamguard.app.service.RoamingForegroundService_MembersInjector;
 import com.roamguard.app.ui.screens.home.HomeViewModel;
@@ -18,6 +19,7 @@ import com.roamguard.app.ui.screens.settings.SettingsViewModel;
 import com.roamguard.app.ui.screens.settings.SettingsViewModel_HiltModules;
 import com.roamguard.app.ui.screens.whitelist.WhitelistViewModel;
 import com.roamguard.app.ui.screens.whitelist.WhitelistViewModel_HiltModules;
+import com.roamguard.common.system.SystemNetworkController;
 import com.roamguard.data.di.DatabaseModule_ProvideDatabaseFactory;
 import com.roamguard.data.di.DatabaseModule_ProvideHomeCountryDaoFactory;
 import com.roamguard.data.di.DatabaseModule_ProvideWhitelistDaoFactory;
@@ -34,9 +36,11 @@ import com.roamguard.domain.usecase.ManageWhitelistUseCase;
 import com.roamguard.domain.usecase.ScanNetworksUseCase;
 import com.roamguard.root.RootCommandExecutor;
 import com.roamguard.root.RootHelper;
+import com.roamguard.root.RootSystemController;
 import com.roamguard.root.di.RootModule_ProvideRootCommandExecutorFactory;
 import com.roamguard.root.di.RootModule_ProvideRootHelperFactory;
 import com.roamguard.shizuku.ShizukuHelper;
+import com.roamguard.shizuku.ShizukuSystemController;
 import com.roamguard.shizuku.di.ShizukuModule_ProvideShizukuHelperFactory;
 import dagger.hilt.android.ActivityRetainedLifecycle;
 import dagger.hilt.android.ViewModelLifecycle;
@@ -419,30 +423,30 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
-      static String com_roamguard_app_ui_screens_home_HomeViewModel = "com.roamguard.app.ui.screens.home.HomeViewModel";
-
       static String com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel = "com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel";
-
-      static String com_roamguard_app_ui_screens_settings_SettingsViewModel = "com.roamguard.app.ui.screens.settings.SettingsViewModel";
-
-      static String com_roamguard_app_ui_screens_whitelist_WhitelistViewModel = "com.roamguard.app.ui.screens.whitelist.WhitelistViewModel";
 
       static String com_roamguard_app_ui_screens_onboarding_OnboardingViewModel = "com.roamguard.app.ui.screens.onboarding.OnboardingViewModel";
 
-      @KeepFieldType
-      HomeViewModel com_roamguard_app_ui_screens_home_HomeViewModel2;
+      static String com_roamguard_app_ui_screens_home_HomeViewModel = "com.roamguard.app.ui.screens.home.HomeViewModel";
+
+      static String com_roamguard_app_ui_screens_whitelist_WhitelistViewModel = "com.roamguard.app.ui.screens.whitelist.WhitelistViewModel";
+
+      static String com_roamguard_app_ui_screens_settings_SettingsViewModel = "com.roamguard.app.ui.screens.settings.SettingsViewModel";
 
       @KeepFieldType
       NetworkScanViewModel com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel2;
 
       @KeepFieldType
-      SettingsViewModel com_roamguard_app_ui_screens_settings_SettingsViewModel2;
+      OnboardingViewModel com_roamguard_app_ui_screens_onboarding_OnboardingViewModel2;
+
+      @KeepFieldType
+      HomeViewModel com_roamguard_app_ui_screens_home_HomeViewModel2;
 
       @KeepFieldType
       WhitelistViewModel com_roamguard_app_ui_screens_whitelist_WhitelistViewModel2;
 
       @KeepFieldType
-      OnboardingViewModel com_roamguard_app_ui_screens_onboarding_OnboardingViewModel2;
+      SettingsViewModel com_roamguard_app_ui_screens_settings_SettingsViewModel2;
     }
   }
 
@@ -511,30 +515,30 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
-      static String com_roamguard_app_ui_screens_onboarding_OnboardingViewModel = "com.roamguard.app.ui.screens.onboarding.OnboardingViewModel";
-
-      static String com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel = "com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel";
-
       static String com_roamguard_app_ui_screens_settings_SettingsViewModel = "com.roamguard.app.ui.screens.settings.SettingsViewModel";
-
-      static String com_roamguard_app_ui_screens_whitelist_WhitelistViewModel = "com.roamguard.app.ui.screens.whitelist.WhitelistViewModel";
 
       static String com_roamguard_app_ui_screens_home_HomeViewModel = "com.roamguard.app.ui.screens.home.HomeViewModel";
 
-      @KeepFieldType
-      OnboardingViewModel com_roamguard_app_ui_screens_onboarding_OnboardingViewModel2;
+      static String com_roamguard_app_ui_screens_onboarding_OnboardingViewModel = "com.roamguard.app.ui.screens.onboarding.OnboardingViewModel";
 
-      @KeepFieldType
-      NetworkScanViewModel com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel2;
+      static String com_roamguard_app_ui_screens_whitelist_WhitelistViewModel = "com.roamguard.app.ui.screens.whitelist.WhitelistViewModel";
+
+      static String com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel = "com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel";
 
       @KeepFieldType
       SettingsViewModel com_roamguard_app_ui_screens_settings_SettingsViewModel2;
 
       @KeepFieldType
+      HomeViewModel com_roamguard_app_ui_screens_home_HomeViewModel2;
+
+      @KeepFieldType
+      OnboardingViewModel com_roamguard_app_ui_screens_onboarding_OnboardingViewModel2;
+
+      @KeepFieldType
       WhitelistViewModel com_roamguard_app_ui_screens_whitelist_WhitelistViewModel2;
 
       @KeepFieldType
-      HomeViewModel com_roamguard_app_ui_screens_home_HomeViewModel2;
+      NetworkScanViewModel com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel2;
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -654,9 +658,9 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
 
     private RoamingForegroundService injectRoamingForegroundService2(
         RoamingForegroundService instance) {
-      RoamingForegroundService_MembersInjector.injectNetworkRepository(instance, singletonCImpl.networkRepositoryImplProvider.get());
       RoamingForegroundService_MembersInjector.injectWhitelistRepository(instance, singletonCImpl.whitelistRepositoryImplProvider.get());
       RoamingForegroundService_MembersInjector.injectSettingsRepository(instance, singletonCImpl.settingsRepositoryImplProvider.get());
+      RoamingForegroundService_MembersInjector.injectSystemController(instance, singletonCImpl.provideSystemNetworkControllerProvider.get());
       return instance;
     }
   }
@@ -682,6 +686,12 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
 
     private Provider<SettingsRepositoryImpl> settingsRepositoryImplProvider;
 
+    private Provider<RootSystemController> rootSystemControllerProvider;
+
+    private Provider<ShizukuSystemController> shizukuSystemControllerProvider;
+
+    private Provider<SystemNetworkController> provideSystemNetworkControllerProvider;
+
     private SingletonCImpl(ApplicationContextModule applicationContextModuleParam) {
       this.applicationContextModule = applicationContextModuleParam;
       initialize(applicationContextModuleParam);
@@ -706,6 +716,9 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
       this.networkRepositoryImplProvider = DoubleCheck.provider(new SwitchingProvider<NetworkRepositoryImpl>(singletonCImpl, 0));
       this.preferencesDataStoreProvider = DoubleCheck.provider(new SwitchingProvider<PreferencesDataStore>(singletonCImpl, 7));
       this.settingsRepositoryImplProvider = DoubleCheck.provider(new SwitchingProvider<SettingsRepositoryImpl>(singletonCImpl, 6));
+      this.rootSystemControllerProvider = DoubleCheck.provider(new SwitchingProvider<RootSystemController>(singletonCImpl, 9));
+      this.shizukuSystemControllerProvider = DoubleCheck.provider(new SwitchingProvider<ShizukuSystemController>(singletonCImpl, 10));
+      this.provideSystemNetworkControllerProvider = DoubleCheck.provider(new SwitchingProvider<SystemNetworkController>(singletonCImpl, 8));
     }
 
     @Override
@@ -764,6 +777,15 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
 
           case 7: // com.roamguard.data.local.datastore.PreferencesDataStore 
           return (T) new PreferencesDataStore(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 8: // com.roamguard.common.system.SystemNetworkController 
+          return (T) SystemControllerModule_ProvideSystemNetworkControllerFactory.provideSystemNetworkController(singletonCImpl.provideRootHelperProvider.get(), singletonCImpl.rootSystemControllerProvider.get(), singletonCImpl.provideShizukuHelperProvider.get(), singletonCImpl.shizukuSystemControllerProvider.get());
+
+          case 9: // com.roamguard.root.RootSystemController 
+          return (T) new RootSystemController(singletonCImpl.provideRootHelperProvider.get());
+
+          case 10: // com.roamguard.shizuku.ShizukuSystemController 
+          return (T) new ShizukuSystemController(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule), singletonCImpl.provideShizukuHelperProvider.get());
 
           default: throw new AssertionError(id);
         }

@@ -1,6 +1,7 @@
 package com.roamguard.app;
 
 import androidx.hilt.work.HiltWrapper_WorkerFactoryModule;
+import com.roamguard.app.di.SystemControllerModule;
 import com.roamguard.app.service.RoamingForegroundService_GeneratedInjector;
 import com.roamguard.app.ui.screens.home.HomeViewModel_HiltModules;
 import com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel_HiltModules;
@@ -143,7 +144,8 @@ public final class RoamGuardApp_HiltComponents {
           ActivityRetainedCBuilderModule.class,
           ServiceCBuilderModule.class,
           RootModule.class,
-          ShizukuModule.class
+          ShizukuModule.class,
+          SystemControllerModule.class
       }
   )
   @Singleton
