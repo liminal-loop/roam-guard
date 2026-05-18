@@ -1,7 +1,0 @@
-com.roamguard.mcc.mcc-data-pngs-0 /home/runner/work/roam-guard/roam-guard/mcc-data/build/generated/res/pngs/release
-com.roamguard.mcc.mcc-data-resValues-1 /home/runner/work/roam-guard/roam-guard/mcc-data/build/generated/res/resValues/release
-com.roamguard.mcc.mcc-data-mergeReleaseResources-2 /home/runner/work/roam-guard/roam-guard/mcc-data/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
-com.roamguard.mcc.mcc-data-mergeReleaseResources-3 /home/runner/work/roam-guard/roam-guard/mcc-data/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
-com.roamguard.mcc.mcc-data-release-4 /home/runner/work/roam-guard/roam-guard/mcc-data/build/intermediates/merged_res/release/mergeReleaseResources
-com.roamguard.mcc.mcc-data-main-5 /home/runner/work/roam-guard/roam-guard/mcc-data/src/main/res
-com.roamguard.mcc.mcc-data-release-6 /home/runner/work/roam-guard/roam-guard/mcc-data/src/release/res

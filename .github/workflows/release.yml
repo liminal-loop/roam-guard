@@ -35,6 +35,9 @@ jobs:
           keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
           storePassword: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
 
+      - name: Generate SBOM
+        run: python3 scripts/generate-sbom.py
+
       - name: Generate changelog
         id: changelog
         uses: mikepenz/release-changelog-builder-action@v4
@@ -44,5 +47,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: app/build/outputs/apk/release/*.apk
+          files: |
+            app/build/outputs/apk/release/*.apk
+            app/build/reports/bom.json
           body: ${{ steps.changelog.outputs.changelog }}
