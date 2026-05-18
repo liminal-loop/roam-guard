@@ -18,7 +18,7 @@ interface WhitelistDao {
     suspend fun getByMcc(mcc: Int): WhitelistCountryEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(country: WhitelistCountryEntity)
+    suspend fun insert(country: WhitelistCountryEntity): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(countries: List<WhitelistCountryEntity>)

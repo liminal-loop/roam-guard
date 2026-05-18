@@ -24,6 +24,14 @@ android {
     }
 }
 
+koverReport {
+    verify {
+        rule {
+            minBound(80)
+        }
+    }
+}
+
 dependencies {
     implementation(project(":domain"))
     implementation(project(":common"))
@@ -45,4 +53,7 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.androidx.room.testing)
 }

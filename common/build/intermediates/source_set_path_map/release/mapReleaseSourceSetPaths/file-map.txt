@@ -1,0 +1,7 @@
+com.roamguard.common-pngs-0 /home/runner/work/roam-guard/roam-guard/common/build/generated/res/pngs/release
+com.roamguard.common-resValues-1 /home/runner/work/roam-guard/roam-guard/common/build/generated/res/resValues/release
+com.roamguard.common-mergeReleaseResources-2 /home/runner/work/roam-guard/roam-guard/common/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
+com.roamguard.common-mergeReleaseResources-3 /home/runner/work/roam-guard/roam-guard/common/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+com.roamguard.common-release-4 /home/runner/work/roam-guard/roam-guard/common/build/intermediates/merged_res/release/mergeReleaseResources
+com.roamguard.common-main-5 /home/runner/work/roam-guard/roam-guard/common/src/main/res
+com.roamguard.common-release-6 /home/runner/work/roam-guard/roam-guard/common/src/release/res

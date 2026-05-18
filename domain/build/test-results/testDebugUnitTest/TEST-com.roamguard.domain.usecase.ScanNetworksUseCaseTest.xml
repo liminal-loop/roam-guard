@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.roamguard.domain.usecase.ScanNetworksUseCaseTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-05-18T14:54:04" hostname="runnervmrw5os" time="0.53">
+  <properties/>
+  <testcase name="invoke returns empty list when no networks found" classname="com.roamguard.domain.usecase.ScanNetworksUseCaseTest" time="0.514"/>
+  <testcase name="invoke returns scanned networks" classname="com.roamguard.domain.usecase.ScanNetworksUseCaseTest" time="0.016"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

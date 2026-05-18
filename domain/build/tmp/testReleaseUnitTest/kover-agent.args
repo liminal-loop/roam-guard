@@ -1,0 +1,9 @@
+/home/runner/work/roam-guard/roam-guard/domain/build/kover/bin-reports/testReleaseUnitTest.ic
+false
+false
+true
+false
+-exclude
+android\..*
+com\.android\..*
+jdk\.internal\..*

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.roamguard.data.local.dao.WhitelistDaoTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-05-18T14:54:14" hostname="runnervmrw5os" time="0.741">
+  <properties/>
+  <testcase name="insertAll adds multiple countries" classname="com.roamguard.data.local.dao.WhitelistDaoTest" time="0.243"/>
+  <testcase name="delete removes country entity" classname="com.roamguard.data.local.dao.WhitelistDaoTest" time="0.045"/>
+  <testcase name="insert adds country to database" classname="com.roamguard.data.local.dao.WhitelistDaoTest" time="0.053"/>
+  <testcase name="deleteByMcc removes country" classname="com.roamguard.data.local.dao.WhitelistDaoTest" time="0.113"/>
+  <testcase name="exists returns 0 when mcc not present" classname="com.roamguard.data.local.dao.WhitelistDaoTest" time="0.05"/>
+  <testcase name="getAll returns countries sorted by name" classname="com.roamguard.data.local.dao.WhitelistDaoTest" time="0.058"/>
+  <testcase name="getByMcc returns null for non-existent mcc" classname="com.roamguard.data.local.dao.WhitelistDaoTest" time="0.043"/>
+  <testcase name="exists returns 1 when mcc present" classname="com.roamguard.data.local.dao.WhitelistDaoTest" time="0.043"/>
+  <testcase name="getAll returns empty list initially" classname="com.roamguard.data.local.dao.WhitelistDaoTest" time="0.052"/>
+  <testcase name="getByMcc returns correct country" classname="com.roamguard.data.local.dao.WhitelistDaoTest" time="0.041"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

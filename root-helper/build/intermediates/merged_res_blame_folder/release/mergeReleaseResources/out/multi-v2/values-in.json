@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.roamguard.root.root-helper-mergeReleaseResources-10:/values-in/values-in.xml",
+            "map": [
+                {
+                    "source": "/home/runner/.gradle/caches/transforms-4/b8606a75c90c8783d7a21e160fb36649/transformed/core-1.8.0/res/values-in/values-in.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.roamguard.root.root-helper-release-12:/values-in/values-in.xml",
+            "map": [
+                {
+                    "source": "/home/runner/.gradle/caches/transforms-4/b8606a75c90c8783d7a21e160fb36649/transformed/core-1.8.0/res/values-in/values-in.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.roamguard.domain.usecase.CheckNetworkAllowedUseCaseTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-05-18T14:54:04" hostname="runnervmrw5os" time="0.127">
+  <properties/>
+  <testcase name="returns false when home country is null and network is not whitelisted" classname="com.roamguard.domain.usecase.CheckNetworkAllowedUseCaseTest" time="0.094"/>
+  <testcase name="returns false when network is not home or whitelisted" classname="com.roamguard.domain.usecase.CheckNetworkAllowedUseCaseTest" time="0.011"/>
+  <testcase name="returns true when network is whitelisted" classname="com.roamguard.domain.usecase.CheckNetworkAllowedUseCaseTest" time="0.011"/>
+  <testcase name="returns true when network is home country" classname="com.roamguard.domain.usecase.CheckNetworkAllowedUseCaseTest" time="0.011"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

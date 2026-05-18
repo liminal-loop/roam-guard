@@ -14,6 +14,8 @@ import com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel;
 import com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel_HiltModules;
 import com.roamguard.app.ui.screens.onboarding.OnboardingViewModel;
 import com.roamguard.app.ui.screens.onboarding.OnboardingViewModel_HiltModules;
+import com.roamguard.app.ui.screens.settings.SettingsViewModel;
+import com.roamguard.app.ui.screens.settings.SettingsViewModel_HiltModules;
 import com.roamguard.app.ui.screens.whitelist.WhitelistViewModel;
 import com.roamguard.app.ui.screens.whitelist.WhitelistViewModel_HiltModules;
 import com.roamguard.data.di.DatabaseModule_ProvideDatabaseFactory;
@@ -397,7 +399,7 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
 
     @Override
     public Map<Class<?>, Boolean> getViewModelKeys() {
-      return LazyClassKeyMap.<Boolean>of(MapBuilder.<String, Boolean>newMapBuilder(4).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_home_HomeViewModel, HomeViewModel_HiltModules.KeyModule.provide()).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel, NetworkScanViewModel_HiltModules.KeyModule.provide()).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_onboarding_OnboardingViewModel, OnboardingViewModel_HiltModules.KeyModule.provide()).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_whitelist_WhitelistViewModel, WhitelistViewModel_HiltModules.KeyModule.provide()).build());
+      return LazyClassKeyMap.<Boolean>of(MapBuilder.<String, Boolean>newMapBuilder(5).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_home_HomeViewModel, HomeViewModel_HiltModules.KeyModule.provide()).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel, NetworkScanViewModel_HiltModules.KeyModule.provide()).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_onboarding_OnboardingViewModel, OnboardingViewModel_HiltModules.KeyModule.provide()).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_settings_SettingsViewModel, SettingsViewModel_HiltModules.KeyModule.provide()).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_whitelist_WhitelistViewModel, WhitelistViewModel_HiltModules.KeyModule.provide()).build());
     }
 
     @Override
@@ -419,23 +421,28 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
     private static final class LazyClassKeyProvider {
       static String com_roamguard_app_ui_screens_home_HomeViewModel = "com.roamguard.app.ui.screens.home.HomeViewModel";
 
+      static String com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel = "com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel";
+
+      static String com_roamguard_app_ui_screens_settings_SettingsViewModel = "com.roamguard.app.ui.screens.settings.SettingsViewModel";
+
       static String com_roamguard_app_ui_screens_whitelist_WhitelistViewModel = "com.roamguard.app.ui.screens.whitelist.WhitelistViewModel";
 
       static String com_roamguard_app_ui_screens_onboarding_OnboardingViewModel = "com.roamguard.app.ui.screens.onboarding.OnboardingViewModel";
 
-      static String com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel = "com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel";
-
       @KeepFieldType
       HomeViewModel com_roamguard_app_ui_screens_home_HomeViewModel2;
+
+      @KeepFieldType
+      NetworkScanViewModel com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel2;
+
+      @KeepFieldType
+      SettingsViewModel com_roamguard_app_ui_screens_settings_SettingsViewModel2;
 
       @KeepFieldType
       WhitelistViewModel com_roamguard_app_ui_screens_whitelist_WhitelistViewModel2;
 
       @KeepFieldType
       OnboardingViewModel com_roamguard_app_ui_screens_onboarding_OnboardingViewModel2;
-
-      @KeepFieldType
-      NetworkScanViewModel com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel2;
     }
   }
 
@@ -451,6 +458,8 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
     private Provider<NetworkScanViewModel> networkScanViewModelProvider;
 
     private Provider<OnboardingViewModel> onboardingViewModelProvider;
+
+    private Provider<SettingsViewModel> settingsViewModelProvider;
 
     private Provider<WhitelistViewModel> whitelistViewModelProvider;
 
@@ -486,12 +495,13 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
       this.homeViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
       this.networkScanViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
       this.onboardingViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
-      this.whitelistViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
+      this.settingsViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
+      this.whitelistViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 4);
     }
 
     @Override
     public Map<Class<?>, javax.inject.Provider<ViewModel>> getHiltViewModelMap() {
-      return LazyClassKeyMap.<javax.inject.Provider<ViewModel>>of(MapBuilder.<String, javax.inject.Provider<ViewModel>>newMapBuilder(4).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_home_HomeViewModel, ((Provider) homeViewModelProvider)).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel, ((Provider) networkScanViewModelProvider)).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_onboarding_OnboardingViewModel, ((Provider) onboardingViewModelProvider)).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_whitelist_WhitelistViewModel, ((Provider) whitelistViewModelProvider)).build());
+      return LazyClassKeyMap.<javax.inject.Provider<ViewModel>>of(MapBuilder.<String, javax.inject.Provider<ViewModel>>newMapBuilder(5).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_home_HomeViewModel, ((Provider) homeViewModelProvider)).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel, ((Provider) networkScanViewModelProvider)).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_onboarding_OnboardingViewModel, ((Provider) onboardingViewModelProvider)).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_settings_SettingsViewModel, ((Provider) settingsViewModelProvider)).put(LazyClassKeyProvider.com_roamguard_app_ui_screens_whitelist_WhitelistViewModel, ((Provider) whitelistViewModelProvider)).build());
     }
 
     @Override
@@ -501,25 +511,30 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
-      static String com_roamguard_app_ui_screens_whitelist_WhitelistViewModel = "com.roamguard.app.ui.screens.whitelist.WhitelistViewModel";
-
-      static String com_roamguard_app_ui_screens_home_HomeViewModel = "com.roamguard.app.ui.screens.home.HomeViewModel";
-
       static String com_roamguard_app_ui_screens_onboarding_OnboardingViewModel = "com.roamguard.app.ui.screens.onboarding.OnboardingViewModel";
 
       static String com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel = "com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel";
 
-      @KeepFieldType
-      WhitelistViewModel com_roamguard_app_ui_screens_whitelist_WhitelistViewModel2;
+      static String com_roamguard_app_ui_screens_settings_SettingsViewModel = "com.roamguard.app.ui.screens.settings.SettingsViewModel";
 
-      @KeepFieldType
-      HomeViewModel com_roamguard_app_ui_screens_home_HomeViewModel2;
+      static String com_roamguard_app_ui_screens_whitelist_WhitelistViewModel = "com.roamguard.app.ui.screens.whitelist.WhitelistViewModel";
+
+      static String com_roamguard_app_ui_screens_home_HomeViewModel = "com.roamguard.app.ui.screens.home.HomeViewModel";
 
       @KeepFieldType
       OnboardingViewModel com_roamguard_app_ui_screens_onboarding_OnboardingViewModel2;
 
       @KeepFieldType
       NetworkScanViewModel com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel2;
+
+      @KeepFieldType
+      SettingsViewModel com_roamguard_app_ui_screens_settings_SettingsViewModel2;
+
+      @KeepFieldType
+      WhitelistViewModel com_roamguard_app_ui_screens_whitelist_WhitelistViewModel2;
+
+      @KeepFieldType
+      HomeViewModel com_roamguard_app_ui_screens_home_HomeViewModel2;
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -552,7 +567,10 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
           case 2: // com.roamguard.app.ui.screens.onboarding.OnboardingViewModel 
           return (T) new OnboardingViewModel(singletonCImpl.settingsRepositoryImplProvider.get(), singletonCImpl.whitelistRepositoryImplProvider.get());
 
-          case 3: // com.roamguard.app.ui.screens.whitelist.WhitelistViewModel 
+          case 3: // com.roamguard.app.ui.screens.settings.SettingsViewModel 
+          return (T) new SettingsViewModel(viewModelCImpl.manageWhitelistUseCase());
+
+          case 4: // com.roamguard.app.ui.screens.whitelist.WhitelistViewModel 
           return (T) new WhitelistViewModel(viewModelCImpl.manageWhitelistUseCase());
 
           default: throw new AssertionError(id);
@@ -691,7 +709,7 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
     }
 
     @Override
-    public void injectRoamGuardApp(RoamGuardApp arg0) {
+    public void injectRoamGuardApp(RoamGuardApp roamGuardApp) {
     }
 
     @Override

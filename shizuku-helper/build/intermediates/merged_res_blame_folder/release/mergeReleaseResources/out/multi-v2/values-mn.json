@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.roamguard.shizuku.shizuku-helper-release-12:/values-mn/values-mn.xml",
+            "map": [
+                {
+                    "source": "/home/runner/.gradle/caches/transforms-4/b8606a75c90c8783d7a21e160fb36649/transformed/core-1.8.0/res/values-mn/values-mn.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.roamguard.shizuku.shizuku-helper-mergeReleaseResources-10:/values-mn/values-mn.xml",
+            "map": [
+                {
+                    "source": "/home/runner/.gradle/caches/transforms-4/b8606a75c90c8783d7a21e160fb36649/transformed/core-1.8.0/res/values-mn/values-mn.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}
