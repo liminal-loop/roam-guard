@@ -4,8 +4,10 @@
 [![E2E Tests](https://github.com/liminal-loop/roam-guard/actions/workflows/e2e.yml/badge.svg)](https://github.com/liminal-loop/roam-guard/actions/workflows/e2e.yml)
 [![Unit Coverage](https://img.shields.io/badge/unit_coverage-80%25-brightgreen)](https://github.com/liminal-loop/roam-guard/actions/workflows/ci.yml)
 [![E2E Coverage](https://img.shields.io/badge/e2e_coverage-50%25-yellowgreen)](https://github.com/liminal-loop/roam-guard/actions/workflows/e2e.yml)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![License Compliance](https://img.shields.io/badge/license_compliance-passing-brightgreen)](https://github.com/liminal-loop/roam-guard/actions/workflows/ci.yml)
 [![SBOM](https://img.shields.io/badge/sbom-available-blue)](https://github.com/liminal-loop/roam-guard/releases)
+[![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
 RoamGuard is an Android application that automatically protects you from unexpected roaming charges by intelligently managing cellular network connections. It monitors the device's network state in the background, detects when roaming occurs, and can automatically disconnect from unauthorized foreign networks, reconnect to your home network or whitelisted networks, or prompt you for confirmation.
 
