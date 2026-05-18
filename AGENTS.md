@@ -92,3 +92,14 @@ Each agent has a specific role, skills, and allowed tools.
 - The `android-architect` agent sets up the initial structure before feature work begins.
 - Every feature request must be submitted as a GitHub Issue with a clear title and description.
 - Agents pick up Issues by commenting "/opencode claim" and then begin implementation.
+- Agents must never commit generated, temporary, or build-related files. This includes but is not limited to:
+  - Build outputs (`build/`, `.gradle/`, `*.apk`, `*.aab`)
+  - IDE configuration (`.idea/`, `*.iml`)
+  - Local logs, temp files (`*.log`, `*.tmp`, `*.bak`)
+  - Environment-specific files (e.g., `local.properties`)
+- Before committing, the agent must run `git status` and stage **only** intended source files, documentation, and configuration that is part of the project.
+- The repository must maintain a complete `.gitignore` for Android/Gradle projects. If a generated file is not covered, the agent adds the pattern to `.gitignore` immediately and excludes the file from the commit.
+- As a safety step, agents should execute `./gradlew clean` (or the equivalent) before staging, to remove any stale build artifacts.
+- Any commit that accidentally contains a disallowed file must be reverted or amended by the agent before requesting review.
+
+  
