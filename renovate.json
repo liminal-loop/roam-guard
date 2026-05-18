@@ -1,0 +1,85 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "baseBranches": ["main"],
+  "schedule": ["before 6am every day"],
+  "timezone": "UTC",
+  "labels": ["dependencies"],
+  "dependencyDashboard": true,
+  "dependencyDashboardApproval": false,
+  "packageRules": [
+    {
+      "description": "Group Compose BOM and Compose-related dependencies",
+      "groupName": "Jetpack Compose",
+      "matchPackagePrefixes": ["androidx.compose", "compose"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "description": "Group Hilt and DI dependencies",
+      "groupName": "Dagger Hilt",
+      "matchPackagePrefixes": ["com.google.dagger", "androidx.hilt"]
+    },
+    {
+      "description": "Group Room dependencies",
+      "groupName": "Room",
+      "matchPackagePrefixes": ["androidx.room"]
+    },
+    {
+      "description": "Group testing libraries",
+      "groupName": "Testing Libraries",
+      "matchPackagePrefixes": ["androidx.test", "io.mockk", "junit", "org.robolectric"]
+    },
+    {
+      "description": "Group Kotlin and KSP",
+      "groupName": "Kotlin & KSP",
+      "matchPackagePrefixes": ["org.jetbrains.kotlin", "com.google.devtools.ksp"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "description": "Group lifecycle and navigation",
+      "groupName": "AndroidX Lifecycle & Navigation",
+      "matchPackagePrefixes": ["androidx.lifecycle", "androidx.navigation"]
+    },
+    {
+      "description": "Group WorkManager and DataStore",
+      "groupName": "AndroidX Background & Storage",
+      "matchPackageNames": ["androidx.work:work-runtime-ktx", "androidx.datastore:datastore-preferences"]
+    },
+    {
+      "description": "Group Shizuku dependencies",
+      "groupName": "Shizuku",
+      "matchPackagePrefixes": ["dev.rikka.shizuku"]
+    },
+    {
+      "description": "Group Kotlin and AGP major updates separately",
+      "groupName": "Kotlin & AGP",
+      "matchPackagePrefixes": ["org.jetbrains.kotlin", "com.android"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Major updates require dashboard approval",
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Auto-merge minor and patch updates when CI passes",
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true
+    }
+  ],
+  "prCreation": "immediate",
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 5,
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps",
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "osvVulnerabilityAlerts": true
+}
