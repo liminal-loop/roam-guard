@@ -17,44 +17,9 @@ jobs:
     permissions:
       id-token: write
       contents: read
-      pull-requests: write
-      issues: write
+      pull-requests: read
+      issues: read
     steps:
-      - name: Check permissions
-        id: check-perms
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const isPr = !!context.payload.issue?.pull_request;
-            if (!isPr) {
-              core.info('Comment is on an issue, not a PR — skipping permission check');
-              return;
-            }
-            const commenter = context.payload.comment.user.login;
-            const authorAssoc = context.payload.comment.author_association;
-            const prNumber = context.payload.issue.number;
-
-            const { data: pr } = await github.rest.pulls.get({
-              ...context.repo,
-              pull_number: prNumber,
-            });
-            const prAuthor = pr.user.login;
-
-            const allowedBots = ['github-actions[bot]', 'opencode[bot]', 'opencode-agent[bot]'];
-            const allowedAssocs = ['OWNER', 'MEMBER', 'COLLABORATOR'];
-
-            if (
-              commenter === prAuthor ||
-              allowedBots.includes(commenter) ||
-              allowedAssocs.includes(authorAssoc)
-            ) {
-              core.info(`@${commenter} is authorized to trigger opencode on PR #${prNumber}`);
-            } else {
-              core.setFailed(
-                `@${commenter} is not the PR author, a maintainer, or an allowed bot`
-              );
-            }
-
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
