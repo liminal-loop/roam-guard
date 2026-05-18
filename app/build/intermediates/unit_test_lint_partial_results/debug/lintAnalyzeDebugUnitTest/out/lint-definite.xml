@@ -193,12 +193,12 @@
             priority="0"/>
         <location
             file="$HOME/work/roam-guard/roam-guard/gradle/libs.versions.toml"
-            line="44"
+            line="49"
             column="98"
-            startOffset="2325"
-            endLine="44"
+            startOffset="2427"
+            endLine="49"
             endColumn="105"
-            endOffset="2332"/>
+            endOffset="2434"/>
     </incident>
 
     <incident
@@ -213,12 +213,12 @@
             priority="0"/>
         <location
             file="$HOME/work/roam-guard/roam-guard/gradle/libs.versions.toml"
-            line="45"
+            line="50"
             column="70"
-            startOffset="2404"
-            endLine="45"
+            startOffset="2506"
+            endLine="50"
             endColumn="77"
-            endOffset="2411"/>
+            endOffset="2513"/>
     </incident>
 
     <incident
@@ -342,6 +342,66 @@
     </incident>
 
     <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test:runner than 1.5.2 is available: 1.7.0">
+        <fix-replace
+            description="Change to 1.7.0"
+            family="Update versions"
+            oldString="1.5.2"
+            replacement="1.7.0"
+            priority="0"/>
+        <location
+            file="$HOME/work/roam-guard/roam-guard/gradle/libs.versions.toml"
+            line="23"
+            column="14"
+            startOffset="440"
+            endLine="23"
+            endColumn="21"
+            endOffset="447"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test:rules than 1.5.0 is available: 1.7.0">
+        <fix-replace
+            description="Change to 1.7.0"
+            family="Update versions"
+            oldString="1.5.0"
+            replacement="1.7.0"
+            priority="0"/>
+        <location
+            file="$HOME/work/roam-guard/roam-guard/gradle/libs.versions.toml"
+            line="24"
+            column="13"
+            startOffset="460"
+            endLine="24"
+            endColumn="20"
+            endOffset="467"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test:core than 1.5.2 is available: 1.7.0">
+        <fix-replace
+            description="Change to 1.7.0"
+            family="Update versions"
+            oldString="1.5.2"
+            replacement="1.7.0"
+            priority="0"/>
+        <location
+            file="$HOME/work/roam-guard/roam-guard/gradle/libs.versions.toml"
+            line="23"
+            column="14"
+            startOffset="440"
+            endLine="23"
+            endColumn="21"
+            endOffset="447"/>
+    </incident>
+
+    <incident
         id="AndroidGradlePluginVersion"
         severity="warning"
         message="A newer version of com.android.application than 8.5.0 is available: 9.2.1. (There is also a newer version of 8.5.𝑥 available, if upgrading to 9.2.1 is difficult: 8.5.2)">
@@ -402,23 +462,33 @@
     </incident>
 
     <incident
-        id="GradleDependency"
+        id="AndroidGradlePluginVersion"
         severity="warning"
-        message="A newer version of org.jetbrains.kotlinx.kover than 0.7.6 is available: 0.8.0">
-        <fix-replace
-            description="Change to 0.8.0"
-            family="Update versions"
-            oldString="0.7.6"
-            replacement="0.8.0"
-            priority="0"/>
+        message="A newer version of com.android.test than 8.5.0 is available: 9.2.1. (There is also a newer version of 8.5.𝑥 available, if upgrading to 9.2.1 is difficult: 8.5.2)">
+        <fix-alternatives>
+            <fix-replace
+                description="Change to 9.2.1"
+                family="Update versions"
+                oldString="8.5.0"
+                replacement="9.2.1"
+                priority="0"/>
+            <fix-replace
+                description="Change to 8.5.2"
+                family="Update versions"
+                robot="true"
+                independent="true"
+                oldString="8.5.0"
+                replacement="8.5.2"
+                priority="0"/>
+        </fix-alternatives>
         <location
             file="$HOME/work/roam-guard/roam-guard/gradle/libs.versions.toml"
-            line="21"
-            column="9"
-            startOffset="400"
-            endLine="21"
-            endColumn="16"
-            endOffset="407"/>
+            line="2"
+            column="7"
+            startOffset="17"
+            endLine="2"
+            endColumn="14"
+            endOffset="24"/>
     </incident>
 
 </incidents>

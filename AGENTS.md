@@ -43,11 +43,13 @@ Each agent has a specific role, skills, and allowed tools.
 - **Capabilities:**
   - Designs and implements unit tests, integration tests, and E2E test scenarios.
   - Builds simulation environments for Android instrumentation tests (mocked TelephonyManager, Hilt test modules).
+  - Manages the `e2e-tests` module (Gradle `com.android.test` plugin) for E2E Android instrumentation tests.
   - Configures JaCoCo/Kover for coverage measurement.
-  - Converts test results to CTRF format and publishes to CI summary.
+  - Emulates network conditions via shell commands (`setprop gsm.operator.*`) on emulator.
+  - Converts test results to CTRF format (`scripts/ctrf-converter.py`) and publishes to CI summary.
   - Enforces coverage thresholds (≥80% unit, ≥50% E2E).
   - Reviews PRs for testability and test quality.
-- **Tools:** JUnit5, MockK, Android Instrumentation, Gradle, CTRF formatter, coverage tools.
+- **Tools:** JUnit4, MockK, Android Instrumentation, Compose UI Test, Gradle, CTRF formatter, coverage tools.
 
 ## Agent: devops-engineer
 

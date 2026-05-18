@@ -423,30 +423,30 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
-      static String com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel = "com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel";
-
-      static String com_roamguard_app_ui_screens_onboarding_OnboardingViewModel = "com.roamguard.app.ui.screens.onboarding.OnboardingViewModel";
+      static String com_roamguard_app_ui_screens_settings_SettingsViewModel = "com.roamguard.app.ui.screens.settings.SettingsViewModel";
 
       static String com_roamguard_app_ui_screens_home_HomeViewModel = "com.roamguard.app.ui.screens.home.HomeViewModel";
 
+      static String com_roamguard_app_ui_screens_onboarding_OnboardingViewModel = "com.roamguard.app.ui.screens.onboarding.OnboardingViewModel";
+
       static String com_roamguard_app_ui_screens_whitelist_WhitelistViewModel = "com.roamguard.app.ui.screens.whitelist.WhitelistViewModel";
 
-      static String com_roamguard_app_ui_screens_settings_SettingsViewModel = "com.roamguard.app.ui.screens.settings.SettingsViewModel";
+      static String com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel = "com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel";
 
       @KeepFieldType
-      NetworkScanViewModel com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel2;
-
-      @KeepFieldType
-      OnboardingViewModel com_roamguard_app_ui_screens_onboarding_OnboardingViewModel2;
+      SettingsViewModel com_roamguard_app_ui_screens_settings_SettingsViewModel2;
 
       @KeepFieldType
       HomeViewModel com_roamguard_app_ui_screens_home_HomeViewModel2;
 
       @KeepFieldType
+      OnboardingViewModel com_roamguard_app_ui_screens_onboarding_OnboardingViewModel2;
+
+      @KeepFieldType
       WhitelistViewModel com_roamguard_app_ui_screens_whitelist_WhitelistViewModel2;
 
       @KeepFieldType
-      SettingsViewModel com_roamguard_app_ui_screens_settings_SettingsViewModel2;
+      NetworkScanViewModel com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel2;
     }
   }
 
@@ -515,30 +515,30 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
-      static String com_roamguard_app_ui_screens_settings_SettingsViewModel = "com.roamguard.app.ui.screens.settings.SettingsViewModel";
-
-      static String com_roamguard_app_ui_screens_home_HomeViewModel = "com.roamguard.app.ui.screens.home.HomeViewModel";
-
       static String com_roamguard_app_ui_screens_onboarding_OnboardingViewModel = "com.roamguard.app.ui.screens.onboarding.OnboardingViewModel";
-
-      static String com_roamguard_app_ui_screens_whitelist_WhitelistViewModel = "com.roamguard.app.ui.screens.whitelist.WhitelistViewModel";
 
       static String com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel = "com.roamguard.app.ui.screens.networkscan.NetworkScanViewModel";
 
-      @KeepFieldType
-      SettingsViewModel com_roamguard_app_ui_screens_settings_SettingsViewModel2;
+      static String com_roamguard_app_ui_screens_whitelist_WhitelistViewModel = "com.roamguard.app.ui.screens.whitelist.WhitelistViewModel";
 
-      @KeepFieldType
-      HomeViewModel com_roamguard_app_ui_screens_home_HomeViewModel2;
+      static String com_roamguard_app_ui_screens_home_HomeViewModel = "com.roamguard.app.ui.screens.home.HomeViewModel";
+
+      static String com_roamguard_app_ui_screens_settings_SettingsViewModel = "com.roamguard.app.ui.screens.settings.SettingsViewModel";
 
       @KeepFieldType
       OnboardingViewModel com_roamguard_app_ui_screens_onboarding_OnboardingViewModel2;
 
       @KeepFieldType
+      NetworkScanViewModel com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel2;
+
+      @KeepFieldType
       WhitelistViewModel com_roamguard_app_ui_screens_whitelist_WhitelistViewModel2;
 
       @KeepFieldType
-      NetworkScanViewModel com_roamguard_app_ui_screens_networkscan_NetworkScanViewModel2;
+      HomeViewModel com_roamguard_app_ui_screens_home_HomeViewModel2;
+
+      @KeepFieldType
+      SettingsViewModel com_roamguard_app_ui_screens_settings_SettingsViewModel2;
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -722,7 +722,7 @@ public final class DaggerRoamGuardApp_HiltComponents_SingletonC {
     }
 
     @Override
-    public void injectRoamGuardApp(RoamGuardApp roamGuardApp) {
+    public void injectRoamGuardApp(RoamGuardApp arg0) {
     }
 
     @Override

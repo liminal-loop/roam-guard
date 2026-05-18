@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.roamguard.e2e">
+
+    <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="34" />
+
+    <instrumentation
+        android:name="com.roamguard.e2e.runner.E2ETestRunner"
+        android:targetPackage="com.roamguard.app"
+        android:functionalTest="true" />
+
+    <application
+        android:allowBackup="false"
+        android:label="RoamGuard E2E Tests"
+        android:supportsRtl="true"
+        tools:ignore="MissingApplicationIcon">
+        <uses-library android:name="android.test.runner" />
+    </application>
+</manifest>
