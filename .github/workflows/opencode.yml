@@ -40,7 +40,7 @@ jobs:
             });
             const prAuthor = pr.user.login;
 
-            const allowedBots = ['github-actions[bot]', 'opencode[bot]'];
+            const allowedBots = ['github-actions[bot]', 'opencode[bot]', 'opencode-agent[bot]'];
             const allowedAssocs = ['OWNER', 'MEMBER', 'COLLABORATOR'];
 
             if (
