@@ -73,4 +73,23 @@ class ShizukuApiReflector {
             false
         }
     }
+
+    fun getNetworkCountryIso(): String? {
+        return try {
+            telephonyManager?.networkCountryIso?.takeIf { it.isNotBlank() }
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    fun setNetworkSelectionModeAutomatic(): Boolean {
+        return try {
+            val tm = telephonyManager ?: return false
+            val method = tm.javaClass.getMethod("setNetworkSelectionModeAutomatic")
+            method.invoke(tm)
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
 }

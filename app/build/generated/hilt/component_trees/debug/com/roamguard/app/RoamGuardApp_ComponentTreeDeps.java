@@ -20,6 +20,7 @@ import dagger.hilt.processor.internal.definecomponent.codegen._dagger_hilt_compo
 import hilt_aggregated_deps._androidx_hilt_work_HiltWrapper_WorkerFactoryModule;
 import hilt_aggregated_deps._com_roamguard_app_MainActivity_GeneratedInjector;
 import hilt_aggregated_deps._com_roamguard_app_RoamGuardApp_GeneratedInjector;
+import hilt_aggregated_deps._com_roamguard_app_di_SystemControllerModule;
 import hilt_aggregated_deps._com_roamguard_app_service_RoamingForegroundService_GeneratedInjector;
 import hilt_aggregated_deps._com_roamguard_app_ui_screens_home_HomeViewModel_HiltModules_BindsModule;
 import hilt_aggregated_deps._com_roamguard_app_ui_screens_home_HomeViewModel_HiltModules_KeyModule;
@@ -78,6 +79,7 @@ import hilt_aggregated_deps._dagger_hilt_android_internal_modules_HiltWrapper_Ac
         _androidx_hilt_work_HiltWrapper_WorkerFactoryModule.class,
         _com_roamguard_app_MainActivity_GeneratedInjector.class,
         _com_roamguard_app_RoamGuardApp_GeneratedInjector.class,
+        _com_roamguard_app_di_SystemControllerModule.class,
         _com_roamguard_app_service_RoamingForegroundService_GeneratedInjector.class,
         _com_roamguard_app_ui_screens_home_HomeViewModel_HiltModules_BindsModule.class,
         _com_roamguard_app_ui_screens_home_HomeViewModel_HiltModules_KeyModule.class,

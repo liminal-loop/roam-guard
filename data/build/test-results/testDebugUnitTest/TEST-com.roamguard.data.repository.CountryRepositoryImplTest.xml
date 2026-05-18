@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.roamguard.data.repository.CountryRepositoryImplTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-05-18T14:53:55" hostname="runnervmrw5os" time="0.888">
+<testsuite name="com.roamguard.data.repository.CountryRepositoryImplTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-05-18T15:42:01" hostname="runnervmrw5os" time="3.028">
   <properties/>
-  <testcase name="getCountryByMcc returns null for unknown mcc" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.782"/>
-  <testcase name="getCountryByMcc returns correct country" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.016"/>
-  <testcase name="getCountryCode returns UNKNOWN for unknown mcc" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.011"/>
-  <testcase name="getCountryCode returns code for known mcc" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.007"/>
-  <testcase name="getAllCountries returns sorted distinct countries" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.02"/>
+  <testcase name="getCountryByMcc returns null for unknown mcc" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="2.963"/>
+  <testcase name="getCountryByMcc returns correct country" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.007"/>
+  <testcase name="getCountryCode returns UNKNOWN for unknown mcc" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.006"/>
+  <testcase name="getCountryCode returns code for known mcc" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.006"/>
+  <testcase name="getAllCountries returns sorted distinct countries" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.013"/>
   <testcase name="getAllCountries deduplicates by mcc" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.006"/>
-  <testcase name="getCountryName returns Unknown for unknown mcc" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.016"/>
-  <testcase name="allCountries flow emits loaded countries" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.017"/>
-  <testcase name="getCountryName returns name for known mcc" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.006"/>
+  <testcase name="getCountryName returns Unknown for unknown mcc" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.006"/>
+  <testcase name="allCountries flow emits loaded countries" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.014"/>
+  <testcase name="getCountryName returns name for known mcc" classname="com.roamguard.data.repository.CountryRepositoryImplTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

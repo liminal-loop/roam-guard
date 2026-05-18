@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.roamguard.data.local.dao.HomeCountryDaoTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-05-18T14:53:42" hostname="runnervmrw5os" time="6.563">
+<testsuite name="com.roamguard.data.local.dao.HomeCountryDaoTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-05-18T15:41:56" hostname="runnervmrw5os" time="3.768">
   <properties/>
-  <testcase name="setHomeCountry inserts and retrieves" classname="com.roamguard.data.local.dao.HomeCountryDaoTest" time="6.243"/>
-  <testcase name="setHomeCountry replaces existing entry" classname="com.roamguard.data.local.dao.HomeCountryDaoTest" time="0.118"/>
-  <testcase name="clearHomeCountry removes home country" classname="com.roamguard.data.local.dao.HomeCountryDaoTest" time="0.111"/>
-  <testcase name="getHomeCountry returns null when empty" classname="com.roamguard.data.local.dao.HomeCountryDaoTest" time="0.088"/>
+  <testcase name="setHomeCountry inserts and retrieves" classname="com.roamguard.data.local.dao.HomeCountryDaoTest" time="3.619"/>
+  <testcase name="setHomeCountry replaces existing entry" classname="com.roamguard.data.local.dao.HomeCountryDaoTest" time="0.057"/>
+  <testcase name="clearHomeCountry removes home country" classname="com.roamguard.data.local.dao.HomeCountryDaoTest" time="0.052"/>
+  <testcase name="getHomeCountry returns null when empty" classname="com.roamguard.data.local.dao.HomeCountryDaoTest" time="0.04"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

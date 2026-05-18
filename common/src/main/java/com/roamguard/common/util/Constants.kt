@@ -9,4 +9,5 @@ object Constants {
     const val MIN_SCAN_INTERVAL = 15
     const val MAX_SCAN_INTERVAL = 60
     const val FOREGROUND_SERVICE_ACTION = "com.roamguard.app.action.FOREGROUND"
+    const val WORK_NAME_ROAMING_CHECK = "roaming_check"
 }

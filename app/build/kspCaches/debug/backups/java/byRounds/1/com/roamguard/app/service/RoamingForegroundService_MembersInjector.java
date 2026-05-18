@@ -1,6 +1,6 @@
 package com.roamguard.app.service;
 
-import com.roamguard.domain.repository.NetworkRepository;
+import com.roamguard.common.system.SystemNetworkController;
 import com.roamguard.domain.repository.SettingsRepository;
 import com.roamguard.domain.repository.WhitelistRepository;
 import dagger.MembersInjector;
@@ -24,39 +24,33 @@ import javax.inject.Provider;
     "cast"
 })
 public final class RoamingForegroundService_MembersInjector implements MembersInjector<RoamingForegroundService> {
-  private final Provider<NetworkRepository> networkRepositoryProvider;
-
   private final Provider<WhitelistRepository> whitelistRepositoryProvider;
 
   private final Provider<SettingsRepository> settingsRepositoryProvider;
 
+  private final Provider<SystemNetworkController> systemControllerProvider;
+
   public RoamingForegroundService_MembersInjector(
-      Provider<NetworkRepository> networkRepositoryProvider,
       Provider<WhitelistRepository> whitelistRepositoryProvider,
-      Provider<SettingsRepository> settingsRepositoryProvider) {
-    this.networkRepositoryProvider = networkRepositoryProvider;
+      Provider<SettingsRepository> settingsRepositoryProvider,
+      Provider<SystemNetworkController> systemControllerProvider) {
     this.whitelistRepositoryProvider = whitelistRepositoryProvider;
     this.settingsRepositoryProvider = settingsRepositoryProvider;
+    this.systemControllerProvider = systemControllerProvider;
   }
 
   public static MembersInjector<RoamingForegroundService> create(
-      Provider<NetworkRepository> networkRepositoryProvider,
       Provider<WhitelistRepository> whitelistRepositoryProvider,
-      Provider<SettingsRepository> settingsRepositoryProvider) {
-    return new RoamingForegroundService_MembersInjector(networkRepositoryProvider, whitelistRepositoryProvider, settingsRepositoryProvider);
+      Provider<SettingsRepository> settingsRepositoryProvider,
+      Provider<SystemNetworkController> systemControllerProvider) {
+    return new RoamingForegroundService_MembersInjector(whitelistRepositoryProvider, settingsRepositoryProvider, systemControllerProvider);
   }
 
   @Override
   public void injectMembers(RoamingForegroundService instance) {
-    injectNetworkRepository(instance, networkRepositoryProvider.get());
     injectWhitelistRepository(instance, whitelistRepositoryProvider.get());
     injectSettingsRepository(instance, settingsRepositoryProvider.get());
-  }
-
-  @InjectedFieldSignature("com.roamguard.app.service.RoamingForegroundService.networkRepository")
-  public static void injectNetworkRepository(RoamingForegroundService instance,
-      NetworkRepository networkRepository) {
-    instance.networkRepository = networkRepository;
+    injectSystemController(instance, systemControllerProvider.get());
   }
 
   @InjectedFieldSignature("com.roamguard.app.service.RoamingForegroundService.whitelistRepository")
@@ -69,5 +63,11 @@ public final class RoamingForegroundService_MembersInjector implements MembersIn
   public static void injectSettingsRepository(RoamingForegroundService instance,
       SettingsRepository settingsRepository) {
     instance.settingsRepository = settingsRepository;
+  }
+
+  @InjectedFieldSignature("com.roamguard.app.service.RoamingForegroundService.systemController")
+  public static void injectSystemController(RoamingForegroundService instance,
+      SystemNetworkController systemController) {
+    instance.systemController = systemController;
   }
 }
