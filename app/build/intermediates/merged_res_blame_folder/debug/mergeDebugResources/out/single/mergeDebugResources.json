@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.roamguard.app-debug-68:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.roamguard.app-main-70:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.roamguard.app-debug-68:/mipmap-hdpi_ic_launcher.xml.flat",
+        "source": "com.roamguard.app-main-70:/mipmap-hdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.roamguard.app-debug-68:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.roamguard.app-main-70:/drawable/ic_launcher_foreground.xml"
+    }
+]
