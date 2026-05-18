@@ -39,7 +39,8 @@ import androidx.compose.ui.unit.dp
 fun HomeScreen(
     viewModel: HomeViewModel,
     onNavigateToWhitelist: () -> Unit,
-    onNavigateToNetworkScan: () -> Unit
+    onNavigateToNetworkScan: () -> Unit,
+    onNavigateToSettings: () -> Unit = {}
 ) {
     val homeCountry by viewModel.homeCountry.collectAsState()
     val isServiceEnabled by viewModel.isServiceEnabled.collectAsState()
@@ -136,6 +137,14 @@ fun HomeScreen(
                 Icon(Icons.Default.Language, contentDescription = null)
                 Text("  Networks")
             }
+        }
+
+        Button(
+            onClick = onNavigateToSettings,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Icon(Icons.Default.Settings, contentDescription = null)
+            Text("  Settings")
         }
 
         Card(

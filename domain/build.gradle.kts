@@ -24,6 +24,14 @@ android {
     }
 }
 
+koverReport {
+    verify {
+        rule {
+            minBound(80)
+        }
+    }
+}
+
 dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
@@ -32,4 +40,5 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
 }

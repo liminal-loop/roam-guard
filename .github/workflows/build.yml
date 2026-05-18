@@ -31,7 +31,7 @@ jobs:
         run: ./gradlew testDebugUnitTest
 
       - name: Generate coverage report
-        run: ./gradlew koverXmlReport koverHtmlReport
+        run: ./gradlew koverXmlReport koverHtmlReport koverVerify
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
@@ -50,6 +50,34 @@ jobs:
           path: |
             domain/build/reports/kover/
             data/build/reports/kover/
+
+      - name: Generate coverage summary
+        if: always()
+        run: |
+          echo "## Coverage Report Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          for report in domain/build/reports/kover/report.xml data/build/reports/kover/report.xml; do
+            if [ -f "$report" ]; then
+              MODULE=$(echo "$report" | cut -d'/' -f1)
+              COVERAGE=$(grep -oP 'line-rate="\K[^"]+' "$report" | head -1)
+              PCT=$(python3 -c "print(f'{float($COVERAGE)*100:.1f}%')" 2>/dev/null || echo "$COVERAGE")
+              echo "- **$MODULE**: $PCT line coverage" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Module Coverage" >> $GITHUB_STEP_SUMMARY
+          echo "| Module | Coverage |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          for report in domain/build/reports/kover/report.xml data/build/reports/kover/report.xml; do
+            if [ -f "$report" ]; then
+              MODULE=$(echo "$report" | cut -d'/' -f1)
+              COVERAGE=$(grep -oP 'line-rate="\K[^"]+' "$report" | head -1)
+              PCT=$(python3 -c "print(f'{float($COVERAGE)*100:.1f}%')" 2>/dev/null || echo "$COVERAGE")
+              echo "| \`$MODULE\` | $PCT |" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

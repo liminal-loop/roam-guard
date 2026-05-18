@@ -1,8 +1,10 @@
 package com.roamguard.data.di
 
+import com.roamguard.data.repository.CountryRepositoryImpl
 import com.roamguard.data.repository.NetworkRepositoryImpl
 import com.roamguard.data.repository.SettingsRepositoryImpl
 import com.roamguard.data.repository.WhitelistRepositoryImpl
+import com.roamguard.domain.repository.CountryRepository
 import com.roamguard.domain.repository.NetworkRepository
 import com.roamguard.domain.repository.SettingsRepository
 import com.roamguard.domain.repository.WhitelistRepository
@@ -27,4 +29,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindNetworkRepository(impl: NetworkRepositoryImpl): NetworkRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindCountryRepository(impl: CountryRepositoryImpl): CountryRepository
 }
