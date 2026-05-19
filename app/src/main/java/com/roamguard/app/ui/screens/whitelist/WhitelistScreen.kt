@@ -27,7 +27,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.roamguard.app.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,10 +43,10 @@ fun WhitelistScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Whitelist") },
+                title = { Text(stringResource(R.string.whitelist_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back_navigation))
                     }
                 }
             )
@@ -64,13 +66,13 @@ fun WhitelistScreen(
                             Icon(Icons.Default.Home, contentDescription = null)
                             Spacer(modifier = Modifier.weight(1f))
                             Text(
-                                text = "Home Country",
+                                text = stringResource(R.string.home_country_label),
                                 style = MaterialTheme.typography.labelMedium
                             )
                         }
                         homeCountry?.let {
                             Text(
-                                text = "${it.countryName} (MCC: ${it.mcc})",
+                                text = stringResource(R.string.mcc_country_format, it.countryName, it.mcc),
                                 style = MaterialTheme.typography.bodyLarge
                             )
                         }
@@ -81,7 +83,7 @@ fun WhitelistScreen(
             item {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = "Allowed Roaming Countries",
+                    text = stringResource(R.string.allowed_roaming_countries),
                     style = MaterialTheme.typography.titleMedium
                 )
             }
@@ -96,13 +98,13 @@ fun WhitelistScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "${country.countryName} (MCC: ${country.mcc})",
+                            text = stringResource(R.string.mcc_country_format, country.countryName, country.mcc),
                             style = MaterialTheme.typography.bodyLarge
                         )
                         IconButton(onClick = { viewModel.removeFromWhitelist(country.mcc) }) {
                             Icon(
                                 Icons.Default.Delete,
-                                contentDescription = "Remove",
+                                contentDescription = stringResource(R.string.remove_action),
                                 tint = MaterialTheme.colorScheme.error
                             )
                         }
@@ -113,7 +115,7 @@ fun WhitelistScreen(
             if (whitelist.isEmpty()) {
                 item {
                     Text(
-                        text = "No whitelisted countries yet.\nAdd countries when roaming or in settings.",
+                        text = stringResource(R.string.no_whitelisted_countries),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(vertical = 16.dp)

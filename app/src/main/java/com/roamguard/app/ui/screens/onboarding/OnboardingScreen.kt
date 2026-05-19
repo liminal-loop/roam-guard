@@ -21,11 +21,14 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.roamguard.app.R
 
 @Composable
 fun OnboardingScreen(
@@ -36,9 +39,10 @@ fun OnboardingScreen(
     val searchQuery by viewModel.searchQuery.collectAsState()
     val isComplete by viewModel.isComplete.collectAsState()
 
-    if (isComplete) {
-        onComplete()
-        return
+    LaunchedEffect(isComplete) {
+        if (isComplete) {
+            onComplete()
+        }
     }
 
     val countries = viewModel.countries.filter {
@@ -53,14 +57,14 @@ fun OnboardingScreen(
             .padding(16.dp)
     ) {
         Text(
-            text = "Welcome to Roam Guard",
+            text = stringResource(R.string.onboarding_title),
             style = MaterialTheme.typography.headlineMedium
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Select your home country",
+            text = stringResource(R.string.onboarding_subtitle),
             style = MaterialTheme.typography.bodyLarge
         )
 
@@ -70,7 +74,7 @@ fun OnboardingScreen(
             value = searchQuery,
             onValueChange = viewModel::updateSearchQuery,
             modifier = Modifier.fillMaxWidth(),
-            placeholder = { Text("Search country...") },
+            placeholder = { Text(stringResource(R.string.search_country)) },
             leadingIcon = {
                 Icon(Icons.Default.Search, contentDescription = null)
             },
@@ -111,14 +115,14 @@ fun OnboardingScreen(
             enabled = selectedMcc != null
         ) {
             Icon(Icons.Default.Check, contentDescription = null)
-            Text("  Continue")
+            Text("  ${stringResource(R.string.continue_action)}")
         }
 
         TextButton(
             onClick = viewModel::skipOnboarding,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
-            Text("Skip for now")
+            Text(stringResource(R.string.skip_action))
         }
     }
 }

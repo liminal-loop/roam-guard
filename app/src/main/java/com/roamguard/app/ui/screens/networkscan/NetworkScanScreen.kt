@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -35,7 +34,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.roamguard.app.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -58,10 +59,10 @@ fun NetworkScanScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Available Networks") },
+                title = { Text(stringResource(R.string.available_networks)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back_navigation))
                     }
                 },
                 actions = {
@@ -69,7 +70,7 @@ fun NetworkScanScreen(
                         onClick = viewModel::scan,
                         enabled = !isScanning
                     ) {
-                        Icon(Icons.Default.Refresh, contentDescription = "Scan")
+                        Icon(Icons.Default.Refresh, contentDescription = stringResource(R.string.scan_action))
                     }
                 }
             )
@@ -86,7 +87,7 @@ fun NetworkScanScreen(
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
             } else if (networks.isEmpty()) {
                 Text(
-                    text = "No networks found.\nTap refresh to scan.",
+                    text = stringResource(R.string.no_networks_found),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -142,14 +143,14 @@ private fun NetworkItem(
             if (network.isHomeNetwork) {
                 Icon(
                     Icons.Default.Star,
-                    contentDescription = "Home",
+                    contentDescription = stringResource(R.string.home_network_label),
                     tint = MaterialTheme.colorScheme.primary
                 )
             }
             if (network.isWhitelisted) {
                 Icon(
                     Icons.Default.Star,
-                    contentDescription = "Whitelisted",
+                    contentDescription = stringResource(R.string.whitelisted_label),
                     tint = MaterialTheme.colorScheme.tertiary
                 )
             }
