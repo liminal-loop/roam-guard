@@ -2,7 +2,7 @@ name: CI Failure Handler
 
 on:
   workflow_run:
-    workflows: ["CI", "E2E Tests"]
+    workflows: ["CI"]
     types: [completed]
     branches: ["**"]
 
